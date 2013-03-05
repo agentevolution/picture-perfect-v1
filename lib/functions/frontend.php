@@ -35,6 +35,15 @@ function picture_perfect_frontend_setup()
     # Add the html5 shim to the document head
     add_action('wp_head', 'picture_perfect_add_ie_html5_shim');
 
+    # Reposition the primary navigation bar
+    remove_action('genesis_after_header', 'genesis_do_nav');
+    add_action('genesis_before_header', 'genesis_do_nav');
+
+    # Remove the header
+    remove_action('genesis_header', 'genesis_do_header');
+    remove_action('genesis_header', 'genesis_header_markup_open', 5);
+    remove_action('genesis_header', 'genesis_header_markup_close', 15);
+
     # Enqueue Scripts
     add_action('wp_enqueue_scripts', 'picture_perfect_load_scripts');
 
@@ -55,11 +64,11 @@ function picture_perfect_frontend_setup()
     add_theme_support(
         'genesis-structural-wraps',
         array(
-         'header',
+         // 'header',
          'nav',
-         'subnav',
-         'inner',
-         'footer-widgets',
+         // 'subnav',
+         // 'inner',
+         // 'footer-widgets',
          'footer',
         )
     );
