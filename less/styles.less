@@ -1,0 +1,53 @@
+/*
+	Stylesheet: Main Stylesheet
+
+	This file is slim and doesn't contain any styles for a reason.
+	We're importing all our other files so we can keep each
+	breakpoint organized and well documented. 
+*/
+
+/* Importing Styles
+ ------------------------------------------------------------------- */
+
+@import "variables.less";
+@import "mixins.less";
+@import "normalize.less";
+@import "constants.less";
+@import "widgets.less";
+@import "base.less";
+@import "home.less";
+
+/* Large Screens */
+@media only screen and (min-width: 1200px) {
+	@import "1200up.less";
+}
+
+/* Desktop to Large Desktop */
+@media only screen and (min-width: 979px) and (max-width: 1200px) {
+	@import "979-1200.less";
+}
+
+/* Portrait tablet to landscape and desktop */
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+	@import "768-979.less";
+}
+
+/* Landscape phone to portrait tablet */
+@media only screen and (max-width: 767px) {
+	@import "767down.less";
+}
+
+@media only screen and (max-width: 480px) {
+	@import "480down.less";
+}
+
+/* Font Awesome More - Scalable Icon Fonts */
+@import "font-awesome-more.less";
+
+
+/******************************************************************
+PRINT STYLESHEET
+******************************************************************/
+@media print { * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } a, a:visited { color: #444 !important; text-decoration: underline; } a[href]:after { content: " (" attr(href) ")"; } abbr[title]:after { content: " (" attr(title) ")"; } .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; } pre, blockquote { border: 1px solid #999; page-break-inside: avoid; } thead { display: table-header-group; } tr, img { page-break-inside: avoid; } img { max-width: 100% !important; }
+    @page { margin: 0.5cm; } p, h2, h3 { orphans: 3; widows: 3; } h2, h3{ page-break-after: avoid; }
+} /* end of print stylesheet (DO NOT DELETE) */

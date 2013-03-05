@@ -1,0 +1,230 @@
+/******************************************************************
+
+Stylesheet: Mixins
+
+This is where you can take advantage of LESS' great features: 
+Mixins & Constants. I won't go in-depth on how they work exactly,
+there are a few articles below that will help do that. What I will
+tell you is that this will help speed up simple changes like
+changing a color or adding CSS3 techniques like box shadow and
+border-radius.
+
+A WORD OF WARNING: It's very easy to overdo it here. Be careful and
+remember LESS is more. See what I did there? Nice.
+
+******************************************************************/
+
+
+// Utility Mixins
+// ---------------------------------------------------------------------
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.hidden { display: none; visibility: hidden; }
+
+// http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+.image-replacement {
+	text-indent: 100%;
+	white-space: nowrap;
+  display: block;
+	overflow: hidden;
+}
+
+.image-border {
+  border: 1px solid @accentBorder;
+  padding: 4px;
+  background: #fff;
+}
+
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+// BORDER RADIUS
+// ---------------------------------------------------------------------
+
+.borderRadius(@radius: 4px) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+      -ms-border-radius: @radius;
+       -o-border-radius: @radius;
+          border-radius: @radius;
+}
+
+.borderRadius-left(@radius: 4px) {
+	-webkit-border-bottom-left-radius: @radius;
+  	   -webkit-border-top-left-radius: @radius;
+		-moz-border-radius-bottomleft: @radius;
+		   -moz-border-radius-topleft: @radius;
+			border-bottom-left-radius: @radius;
+			   border-top-left-radius: @radius;
+}
+
+.borderRadius-right(@radius: 4px) {
+	-webkit-border-bottom-right-radius: @radius;
+  	   -webkit-border-top-right-radius: @radius;
+		-moz-border-radius-bottomright: @radius;
+		   -moz-border-radius-topright: @radius;
+			border-bottom-right-radius: @radius;
+			   border-top-right-radius: @radius;
+}
+
+.borderRadius-bottom(@radius: 4px) {
+	-webkit-border-bottom-right-radius: @radius;
+	 -webkit-border-bottom-left-radius: @radius;
+	    -moz-border-radius-bottomright: @radius;
+	     -moz-border-radius-bottomleft: @radius;
+	        border-bottom-right-radius: @radius;
+	         border-bottom-left-radius: @radius;
+}
+
+.borderRadius-top(@radius: 4px) {
+	-webkit-border-top-right-radius: @radius;
+	 -webkit-border-top-left-radius: @radius;
+	    -moz-border-radius-topright: @radius;
+	     -moz-border-radius-topleft: @radius;
+	        border-top-right-radius: @radius;
+	         border-top-left-radius: @radius;
+}
+
+
+// TRANSITION
+// ---------------------------------------------------------------------
+
+.transition(@what: all, @time: 0.2s, @function: ease) {
+	-webkit-transition: @what @time @function;
+	   -moz-transition: @what @time @function;
+ 	    -ms-transition: @what @time @function;
+	     -o-transition: @what @time @function;
+	        transition: @what @time @function;
+}
+
+
+// Gradients
+// ---------------------------------------------------------------------
+
+// USAGE:
+//   #gradient > .vertical(color1, color2);
+//   #gradient > .horizontal(color1, color2);
+#gradient {
+  .horizontal(@startColor: #555, @endColor: #333) {
+    background-color: @endColor;
+    background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+    background-image: linear-gradient(to right, @startColor, @endColor); // Standard, IE10
+    background-repeat: repeat-x;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@startColor),argb(@endColor))); // IE9 and down
+  }
+  .vertical(@startColor: #555, @endColor: #333) {
+    background-color: mix(@startColor, @endColor, 60%);
+    background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+    background-image: linear-gradient(to bottom, @startColor, @endColor); // Standard, IE10
+    background-repeat: repeat-x;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down
+  }
+  .directional(@startColor: #555, @endColor: #333, @deg: 45deg) {
+    background-color: @endColor;
+    background-repeat: repeat-x;
+    background-image: -moz-linear-gradient(@deg, @startColor, @endColor); // FF 3.6+
+    background-image: -webkit-linear-gradient(@deg, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(@deg, @startColor, @endColor); // Opera 11.10
+    background-image: linear-gradient(@deg, @startColor, @endColor); // Standard, IE10
+  }
+  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
+    background-color: mix(@midColor, @endColor, 80%);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
+    background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop, @endColor);
+    background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-repeat: no-repeat;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down, gets no color-stop at all for proper fallback
+  }
+  .radial(@innerColor: #555, @outerColor: #333)  {
+    background-color: @outerColor;
+    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
+    background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
+    background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
+    background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
+    background-repeat: no-repeat;
+  }
+  .striped(@color: #555, @angle: 45deg) {
+    background-color: @color;
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  }
+}
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+//   #translucent > .border(#000, 0.6) is equivelant to rgba(0,0,0,0.6)
+//   #translucent > .border(#fff, 0.6) is equivelant to rgba(255,255,255,0.6)
+//   Don't forget you still need border: size type; i.e. border: 1px solid;
+#translucent {
+  .background(@color: @white, @alpha: 1) {
+    background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+  }
+  .border(@color: @white, @alpha: 1) {
+    border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+    .background-clip(padding-box);
+  }
+}
+
+// Background clipping
+// Heads up: FF 3.6 and under need "padding" instead of "padding-box"
+.background-clip(@clip) {
+  -webkit-background-clip: @clip;
+     -moz-background-clip: @clip;
+          background-clip: @clip;
+}
+
+
+// Box Sizing
+// --------------------------------------------------
+
+.boxSizing(@type: border-box) {
+	-webkit-box-sizing: @type;
+	   -moz-box-sizing: @type;
+		  -ms-box-sizing: @type;
+	     -o-box-sizing: @type;
+			    box-sizing: @type;
+}
+
+// Box Shadow
+// --------------------------------------------------
+
+.boxShadow(@x: 0, @y: 0, @radius: 4px, @spread: 0, @color: rgba(0,0,0,0.5)) {
+	-webkit-box-shadow: @x @y @radius @spread @color;
+	   -moz-box-shadow: @x @y @radius @spread @color;
+		  -ms-box-shadow: @x @y @radius @spread @color;
+	     -o-box-shadow: @x @y @radius @spread @color;
+			    box-shadow: @x @y @radius @spread @color;
+}

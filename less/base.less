@@ -1,0 +1,321 @@
+/******************************************************************
+
+Stylesheet: Base
+
+This is where most of the customization takes place.
+
+******************************************************************/
+
+
+// =HEADER
+// ---------------------------------------------------------------------
+
+.site-header {
+
+	overflow: hidden;
+	width: 100%;
+	padding: 15px 0;
+
+	#title-area {
+		float: left;
+		overflow: hidden;
+		width: 400px;
+	}
+
+	#title {
+		font-size: 30px;
+		line-height: 100%;
+		margin: 0;
+
+		a {
+			// width: 220px;
+			// height: 91px;
+			// .image-replacement();
+			// background: url(../images/logo.png) no-repeat;
+		}
+
+		a:visited {}
+
+		a:hover, a:focus {
+			text-decoration: none;
+		}
+	}
+
+	#description {
+		font-size: 14px;
+		margin-top: 10px;
+	}
+
+	.widget-area {
+		float: right;
+		width: 200px;
+	}
+
+	.agent-phone {
+		font-size: 24px;
+	}
+
+	.social-icons {
+
+	}
+}
+
+
+// =PRIMARY NAVIGATION
+// ---------------------------------------------------------------------
+
+.primary {
+
+	background: @navBG;
+
+	ul {
+
+	}
+
+	li {
+
+		a {
+			color: @navLinkColor;
+			font-size: @navFontSize;
+			.transition(color, 0.3s, ease);
+		}
+
+		a:hover,
+		a:active,
+		.current_page_item a,
+		.current-cat a,
+		.current-menu-item a {
+			color: @navLinkHoverColor;
+		}
+
+		// nav.primary li li a
+		li a,
+		li a:link,
+		li a:visited {
+
+		}
+
+		// nav.primary li li a:hover
+		li a:hover,
+		li a:active {
+
+		}
+
+		// nav.primary li ul
+		ul {
+		}
+
+		// nav.primary li ul a
+		ul a {
+
+		}
+
+		// nav.primary li ul ul
+		ul ul {
+
+		}
+	}
+}
+
+
+// =SECONDARY NAVIGATION
+// ---------------------------------------------------------------------
+
+.secondary {
+
+	background: @subnavBG;
+
+	ul {
+
+	}
+
+	li {
+
+		a {
+			color: @subnavLinkColor;
+			font-size: @subnavFontSize;
+			.transition(color, 0.3s, ease);
+		}
+
+		a:hover,
+		a:active,
+		.current_page_item a,
+		.current-cat a,
+		.current-menu-item a {
+			color: @subnavLinkHoverColor;
+		}
+
+		// nav.secondary li li a
+		li a,
+		li a:link,
+		li a:visited {
+
+		}
+
+		// nav.secondary li li a:hover
+		li a:hover,
+		li a:active {
+
+		}
+
+		// nav.secondary li ul
+		ul {
+		}
+
+		// nav.secondary li ul a
+		ul a {
+
+		}
+
+		// nav.secondary li ul ul
+		ul ul {
+
+		}
+	}
+}
+
+
+// =SIDEBARS
+// ---------------------------------------------------------------------
+
+.sidebar {
+
+	.widget {
+		border-bottom: 4px double #ddd;
+		margin: 0 0 25px;
+		padding: 0 0 10px;
+		.clearfix();
+	}
+
+	.widgettitle {
+		font-size: @sbHeaderFontSize;
+	}
+
+}
+
+
+// =BUTTONS
+// ---------------------------------------------------------------------
+
+div.gform_footer input.button,
+input[type="submit"],
+input[type="button"],
+.enews #subbutton,
+.reply a,
+.reply a:visited,
+.searchsubmit,
+#submit,
+.btn-primary,
+.btn-primary:visited {
+	color: @btnPrimaryColor;
+	#gradient > .vertical(#5DA5EF, #164DA7);
+	border: 1px solid #317ac4;
+	box-shadow: 0 0 2px #97c5f5 inset;
+	text-shadow: -1px -1px #005297;
+}
+
+div.gform_footer input.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+.enews #subbutton:hover,
+.reply a:hover,
+.searchsubmit:hover,
+#submit:hover,
+.btn-primary:hover {
+	color: @btnPrimaryColor;
+}
+
+input.btn-alt,
+.btn-alt,
+.btn-alt:visited {
+	color: @btnAltColor;
+	#gradient > .vertical(#76CA86, #2B7E3B);
+	border: 1px solid #2D803D;
+	text-shadow: -1px -1px #1E6D2D;
+	box-shadow: 0 0 2px #A1DDAD inset;
+}
+
+.btn-alt,
+input.btn-alt:hover {
+	color: @btnAltColor;
+}
+
+div.gform_footer input.button:hover,
+input[type="submit"]:hover,
+.enews #subbutton:hover,
+.reply a:hover,
+.searchsubmit:hover,
+#submit:hover,
+.btn-alt:hover,
+.btn-primary:hover {
+	text-decoration: none;
+}
+
+.btn-login,
+.btn-register {
+	width: 35%;
+	text-align: center;
+	margin-top: 5px;
+}
+
+
+// =CONTACT INFO
+// ---------------------------------------------------------------------
+
+.agent-phone {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+.agent-address {
+	
+}
+
+
+// =FOOTER WIDGETS
+// ---------------------------------------------------------------------
+
+#footer-widgets {
+	overflow: hidden;
+	width: 100%;
+	margin-bottom: 30px;
+
+	.widget {
+		background: transparent;
+		border: 0;
+		padding: 0;
+	}
+
+	.textwidget {
+		padding: 0;
+	}
+
+	.widget-area {
+		float: left;
+		padding-left: 3%;
+
+		// 3 Widgets
+		width: 31.33%;
+
+		// 4 Widgets
+		// width: 23.5%;
+	}
+
+	.widgetittle {
+		font-size: @fwHeaderFontSize;
+	}
+
+	.footer-widgets-1 {
+		padding-left: 0;
+	}
+}
+
+
+// =FOOTER
+// ---------------------------------------------------------------------
+
+.site-footer {
+	overflow: hidden;
+	width: 100%;
+	margin: 0 0 15px;
+}
