@@ -24,6 +24,10 @@ body {
 	margin: 0 auto;
 }
 
+#wrap {
+	background-color: @wrapBG;
+}
+
 // can't group this with ::selection because of bug
 // don't try
 ::-moz-selection {
@@ -61,15 +65,6 @@ a, a:visited {
 a:hover, a:focus {
 	color: lighten(@linkColor, 9%);
 	text-decoration: underline;
-}
-
-#wrap {
-	background-color: @wrapBG;
-}
-
-#inner {
-	padding: 20px 0 0;
-	margin: 0 auto;
 }
 
 
@@ -266,10 +261,6 @@ ul.genesis-nav-menu li.sfHover ul,
 img {
 	height: auto;
 	overflow: hidden;
-}
-
-.widget_bootstrap_carousel_widget .carousel img {
-	// max-height: 380px;
 }
 
 .author-box .avatar {
@@ -480,7 +471,7 @@ h5, .h5 {
 }
 
 
-// =POST META / =AE POST META
+// =POST META
 // ---------------------------------------------------------------------
 
 .post-meta {
@@ -493,44 +484,21 @@ h5, .h5 {
 	width: 100%;
 }
 
-// WOO Testimonials
-.single-testimonial .post-info,
-.single-testimonial .post-meta {
-	display: none;
-}
-
-#ae-postmeta {
-	clear: both;
-	margin: 15px auto;
-	width: 195px;
-
-	.socialite {
-		float: left;
-		margin-right: 10px;
-	}
-}
-
-.related-posts {
-	margin-bottom: 15px;
-
-	li {
-		margin-bottom: 5px;
-		list-style: none;
-	}
-}
-
 
 // =INNER/CONTENT-SIDEBAR-WRAP/CONTENT
 // ---------------------------------------------------------------------
 
 #inner {
-	margin: 20px auto;
-	overflow: hidden;
+	padding: 0;
+	margin: 50px auto 0;
+	.clearfix();
+	background: #fff;
+	width: 1140px;
 }
 
 #content-sidebar-wrap {
-	float: left;
-	width: 100%;
+	.clearfix();
+	padding: 20px;
 }
 
 #content {
@@ -542,8 +510,7 @@ h5, .h5 {
 	width: 100%;
 }
 
-.sidebar-content #content,
-.sidebar-sidebar-content #content {
+.sidebar-content #content {
 	float: right;
 }
 
@@ -649,13 +616,8 @@ p.subscribe-to-comments {
 	width: 15.625%; /* 150/960 */
 }
 
-.sidebar-content #sidebar,
-.sidebar-sidebar-content #sidebar {
+.sidebar-content #sidebar {
 	float: left;
-}
-
-.content-sidebar-sidebar #sidebar-alt {
-	float: right;
 }
 
 .widget-area ol,
@@ -688,12 +650,12 @@ p.subscribe-to-comments {
 	font-size: 12px;
 	margin: 10px 10px 0;
 	padding: 3px;
-	width: 278px;
+	width: 278px; // FIXME
 }
 
 #sidebar-alt #cat,
 #sidebar-alt .widget_archive select {
-	width: 128px;
+	width: 128px; // FIXME
 }
 
 
@@ -865,7 +827,7 @@ nav.primary .searchform {
 	font-size: 12px;
 	margin: 5px 2px 0 0;
 	padding: 4px 5px;
-	width: 195px;
+	width: 195px; // FIXME
 }
 
 .sidebar .gform_footer {
@@ -968,7 +930,7 @@ nav.primary .searchform {
 
 .thread-alt,
 .thread-even {
-	background-color: #f7f7f7;
+	background-color: #f7f7f7; // FIXME
 }
 
 .alt,
@@ -977,31 +939,5 @@ nav.primary .searchform {
     border-radius: 4px;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-
-/* =Communities Template / Masonry Defaults
------------------------------------------------------------- */
-
-.masonry-item {
-	width: 280px;
-	margin: 10px;
-	float: left;
-	padding: 9px;
-	border-radius: 8px;
-	background: #fff;
-	border: 1px solid #ddd;
-}
-
-.masonry-item a img {
-	width: 100%;
-	height: auto;
-	margin-bottom: 12px;
-}
-
-.masonry-item h2 a {
-	text-decoration: none;
-	font-size: 24px;
-	line-height: 100%;
+    border: 1px solid #ccc; // FIXME
 }
