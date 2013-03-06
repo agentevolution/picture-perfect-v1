@@ -6,7 +6,7 @@
  *
  * @package  PicturePerfect/Frontend
  * @author   Agent Evolution <support@agentevolution.com>
- * @license  http://www.gnu.org/licenses/gpl-2.0.html
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     http://themes.agentevolution.com
  */
 
@@ -200,7 +200,7 @@ function picture_perfect_load_scripts()
  */
 function picture_perfect_add_google_fonts()
 {
-    echo "<link href='http://fonts.googleapis.com/css?family=Lato|PT+Sans' rel='stylesheet' type='text/css'>";
+    echo "<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>";
 
 }
 
@@ -216,13 +216,11 @@ function picture_perfect_footer()
     <div class="one-half first footer-left">
         <?php
         echo
-        do_shortcode(
-            wpautop(genesis_get_option('footer-left', 'agentevo-footer-settings'))
-        );
+        do_shortcode(genesis_get_option('footer-left', 'agentevo-footer-settings'));
         ?>
     </div>
     <div class="one-half footer-right">
-        <p>
+        <p class="credits">
             Powered by the
             <a href="http://themes.agentevolution.com/shop/<?php echo AE_CHILD_THEME_SLUG; ?>">
                 <?php echo AE_CHILD_THEME_NAME; ?>
@@ -239,7 +237,7 @@ function picture_perfect_footer()
         );
         ?>
     </div>
-    <div id="footer-disclaimer">
+    <div class="footer-disclaimer">
         <?php
         echo
         do_shortcode(

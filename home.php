@@ -14,7 +14,7 @@ function picture_perfect_home_genesis_meta()
 	);
 
 	if (false === any_picture_perfect_sidebar_is_active($sidebar_widget_areas)) {
-		return;
+		// return;
 	}
 
 	# Custom body class
@@ -45,9 +45,17 @@ function picture_perfect_custom_home_page_body_class($classes)
  */
 function picture_perfect_home_loop_helper()
 {
-	if (is_active_sidebar('home-right')) {
-		dynamic_sidebar('home-right');
-	}
+	echo '
+	<div class="home-right one-third first pull-right">
+		<h1 class="site-title">', get_bloginfo('name'), '</h1>
+		<p class="site-description">', get_bloginfo('description'), '</p>';
+
+		if (is_active_sidebar('home-right')) {
+			dynamic_sidebar('home-right');
+		}
+
+	echo '
+	</div>';
 }
 
 /**

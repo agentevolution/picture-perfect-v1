@@ -2,6 +2,16 @@
 
 Genesis child theme by Agent Evolution
 
+## NOTES
+
+Decide on method for loading background image...
+Probably use jQuery and load a background-image with a smaller size
+on smaller screen sizes. This method will avoid loading giant images
+on smart phones.
+
+Make sure that background is fixed on smart phones as the layout will be
+extremely verticle causing a terrible stretch of the background image.
+
 
 ## TODO
 

@@ -80,7 +80,7 @@ class Agentevo_Helpers
 			'twitter'     => $this->get_agent_info('twitter_url'),
 			'pinterest'   => $this->get_agent_info('pinterest_url'),
 			'linkedin'    => $this->get_agent_info('linkedin_url'),
-			'google_plus' => $this->get_agent_info('googleplus_url'),
+			'google-plus' => $this->get_agent_info('googleplus_url'),
 			'email'       => $this->get_agent_info('email')
 		);
 	}

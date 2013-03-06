@@ -51,7 +51,7 @@ class Agentevo_Footer_Settings extends Genesis_Admin_Boxes
 
         # Set the default values
         $default_settings = array(
-                             'footer-left'  => 'Copyright &copy; '.date('Y').' All Rights Reserved',
+                             'footer-left'  => '[social_icons] <p class="copyright">Copyright &copy; ' . date('Y') . ' All Rights Reserved</p>',
                              'footer-right' => '',
                              'disclaimer'   => '',
                             );
@@ -61,7 +61,6 @@ class Agentevo_Footer_Settings extends Genesis_Admin_Boxes
 
         # Initialize the Sanitization Filter
         add_action('genesis_settings_sanitizer_init', array($this, 'sanitization_filters'));
-
     }
 
 
@@ -82,7 +81,6 @@ class Agentevo_Footer_Settings extends Genesis_Admin_Boxes
              'disclaimer',
             )
         );
-
     }
 
 
@@ -105,7 +103,6 @@ class Agentevo_Footer_Settings extends Genesis_Admin_Boxes
              'content' => '<p>Use the editors below to customize the content of the footer left, footer right, and disclaimer.</p>',
             )
         );
-
     }
 
 
@@ -117,7 +114,6 @@ class Agentevo_Footer_Settings extends Genesis_Admin_Boxes
     public function metaboxes()
     {
         add_meta_box('footer_metabox', 'Footer', array($this, 'footer_metabox'), $this->pagehook, 'main', 'high');
-
     }
 
 
@@ -136,7 +132,6 @@ class Agentevo_Footer_Settings extends Genesis_Admin_Boxes
 
         echo '<p><strong>Disclaimer:</strong></p>';
         wp_editor($this->get_field_value('disclaimer'), $this->get_field_id('disclaimer'), array('textarea_rows' => 5));
-
     }
 
 }

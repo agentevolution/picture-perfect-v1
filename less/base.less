@@ -19,6 +19,8 @@ This is where most of the customization takes place.
 .primary {
 
 	background: @navBG;
+	background: rgba(0,0,0,0.90);
+	padding: 13px 0 10px;
 
 	ul {
 
@@ -29,7 +31,18 @@ This is where most of the customization takes place.
 		a {
 			color: @navLinkColor;
 			font-size: @navFontSize;
+			padding: 0 13px;
 			.transition(color, 0.3s, ease);
+			border-right: 1px solid #fff;
+			border-left: 1px solid #6b6b6b;
+		}
+
+		&:last-child {
+			a { border-right: 0; }
+		}
+
+		&:first-child {
+			a { border-left: 0; }
 		}
 
 		a:hover,
@@ -75,7 +88,7 @@ This is where most of the customization takes place.
 
 .secondary {
 
-	background: @subnavBG;
+	// background: @subnavBG;
 
 	ul {
 
@@ -84,9 +97,9 @@ This is where most of the customization takes place.
 	li {
 
 		a {
-			color: @subnavLinkColor;
-			font-size: @subnavFontSize;
-			.transition(color, 0.3s, ease);
+			// color: @subnavLinkColor;
+			// font-size: @subnavFontSize;
+			// .transition(color, 0.3s, ease);
 		}
 
 		a:hover,
@@ -94,7 +107,7 @@ This is where most of the customization takes place.
 		.current_page_item a,
 		.current-cat a,
 		.current-menu-item a {
-			color: @subnavLinkHoverColor;
+			// color: @subnavLinkHoverColor;
 		}
 
 		// nav.secondary li li a
@@ -261,6 +274,47 @@ input[type="submit"]:hover,
 
 .site-footer {
 	overflow: hidden;
-	width: 100%;
-	margin: 0 0 15px;
+	background: #000;
+	background: rgba(0,0,0,0.90);
+	color: #fff;
+	padding: 10px 0;
+
+	p {
+		color: #fff;
+	}
+
+	.agent-social-icons {
+		display: inline-block;
+	}
+
+	.agent-social-icons a {
+		color: #fff;
+	}
+
+	.footer-left {
+		.copyright {
+			margin: 0 0 0 15px;
+			padding: 0;
+			display: inline-block;
+		}
+	}
+
+	.footer-right {
+		padding-top: 4px;
+
+		.credits {
+			padding: 0;
+		}
+	}
+
+	.footer-disclaimer {
+		float: left;
+		clear: both;
+		width: 100%;
+		margin-top: 15px;
+
+		p {
+			text-align: center;
+		}
+	}
 }

@@ -6,7 +6,7 @@
  *
  * @package  PicturePerfect/Helpers
  * @author   Agent Evolution <support@agentevolution.com>
- * @license  http://www.gnu.org/licenses/gpl-2.0.html GPL
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     http://themes.agentevolution.com
  */
 

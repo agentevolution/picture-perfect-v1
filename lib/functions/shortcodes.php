@@ -125,6 +125,7 @@ function agentevo_social_icons()
 
         if ('email' === $type) {
             $url = 'mailto:' . $url;
+            $type = 'envelope';
         }
 
         if ('' !== $url) {

@@ -64,7 +64,6 @@ function picture_perfect_admin_setup()
 
     # Footer settings admin page
     add_action('genesis_admin_menu', 'picture_perfect_add_footer_settings');
-
 }
 
 
@@ -95,7 +94,6 @@ function picture_perfect_dont_update_theme($r, $url)
     $r['body']['themes'] = serialize($themes);
 
     return $r;
-
 }
 
 
@@ -117,7 +115,6 @@ function picture_perfect_add_documentation_link_to_admin_bar()
          'meta'   => array('target' => '_blank')
         )
     );
-
 }
 
 
@@ -128,7 +125,13 @@ function picture_perfect_add_documentation_link_to_admin_bar()
  */
 function picture_perfect_register_sidebars()
 {
-
+    genesis_register_sidebar(
+        array(
+         'id'          => 'home-right',
+         'name'        => 'Home Right',
+         'description' => 'This is the Home Right section',
+        )
+    );
 }
 
 
@@ -140,7 +143,6 @@ function picture_perfect_register_sidebars()
 function picture_perfect_customize_menu_link()
 {
     add_theme_page('Customize', 'Customize', 'edit_theme_options', 'customize.php');
-
 }
 
 
@@ -153,5 +155,4 @@ function picture_perfect_add_footer_settings()
 {
     global $_agentevo_footer_settings;
     $_agentevo_footer_settings = new Agentevo_Footer_Settings;
-
 }
