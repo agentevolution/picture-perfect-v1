@@ -1,5 +1,7 @@
 <?php
 
+remove_action('genesis_before_footer', 'genesis_footer_widget_areas');
+
 add_filter('genesis_pre_get_option_site_layout', '__genesis_return_full_width_content');
 add_action('genesis_meta', 'picture_perfect_home_genesis_meta');
 /**
@@ -15,6 +17,7 @@ function picture_perfect_home_genesis_meta()
 
 	if (false === any_picture_perfect_sidebar_is_active($sidebar_widget_areas)) {
 		// return;
+		// FIXME
 	}
 
 	# Custom body class
@@ -45,17 +48,15 @@ function picture_perfect_custom_home_page_body_class($classes)
  */
 function picture_perfect_home_loop_helper()
 {
-	echo '
-	<div class="home-right one-third first pull-right">
-		<h1 class="site-title">', get_bloginfo('name'), '</h1>
-		<p class="site-description">', get_bloginfo('description'), '</p>';
+	echo '<div class="home-right">';
+
+		picture_perfect_site_title_description_markup();
 
 		if (is_active_sidebar('home-right')) {
 			dynamic_sidebar('home-right');
 		}
 
-	echo '
-	</div>';
+	echo '</div>';
 }
 
 /**
