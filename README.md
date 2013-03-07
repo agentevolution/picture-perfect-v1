@@ -2,6 +2,7 @@
 
 Genesis child theme by Agent Evolution
 
+
 ## NOTES
 
 Decide on method for loading background image...
@@ -14,8 +15,9 @@ extremely verticle causing a terrible stretch of the background image.
 
 
 ## TODO
-
-
+* listing-search page - list of recommended IDX providers
+* Some kind of "Setup Theme" function
+* Add gravity forms form to contact page
 
 
 ## Genesis-child TODO
@@ -23,7 +25,6 @@ extremely verticle causing a terrible stretch of the background image.
 * Remove .related-posts css
 * Go through all CSS and rip out AE Client site specific stuff
 * home.php
-
 
 
 ## A note on coding style
