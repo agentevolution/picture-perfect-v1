@@ -133,5 +133,13 @@ function agentevo_social_icons()
     }
 
     return '<div class="agent-social-icons clearfix">' . $icons . '</div>';
+}
 
+
+add_shortcode('html_ent', 'agentevo_html_ent_sc');
+/**
+ * Creates the htmlentities shortcode
+ */
+function agentevo_html_ent_sc($atts, $content = null) {
+    return htmlentities($content);
 }
