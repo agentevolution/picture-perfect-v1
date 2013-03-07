@@ -111,7 +111,7 @@ function picture_perfect_add_documentation_link_to_admin_bar()
          'parent' => false,
          'id'     => 'theme-setup-guide',
          'title'  => __('Theme Setup Guide'),
-         'href'   => 'http://themes.agentevolution.com/guides/turn-key-theme-setup-guide',
+         'href'   => 'http://themes.agentevolution.com/guides/picture-perfect-theme-setup-guide',
          'meta'   => array('target' => '_blank')
         )
     );

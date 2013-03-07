@@ -25,6 +25,8 @@ extremely verticle causing a terrible stretch of the background image.
 * Remove .related-posts css
 * Go through all CSS and rip out AE Client site specific stuff
 * home.php
+* Change slug of theme setup guide url
+* Type in footer-widgets .widgettitle
 
 
 ## A note on coding style

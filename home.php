@@ -1,6 +1,6 @@
 <?php
 
-remove_action('genesis_before_footer', 'genesis_footer_widget_areas');
+remove_action('genesis_after_content', 'genesis_footer_widget_areas', 999);
 
 add_filter('genesis_pre_get_option_site_layout', '__genesis_return_full_width_content');
 add_action('genesis_meta', 'picture_perfect_home_genesis_meta');

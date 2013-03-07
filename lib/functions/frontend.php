@@ -134,7 +134,7 @@ function picture_perfect_frontend_setup()
 function picture_perfect_site_title_description_markup()
 {
     $markup = '<div class="site-title-description-container">';
-    $markup .= "\n" . '<h1 class="site-title">' . get_bloginfo('name') . '</h1>';
+    $markup .= "\n" . '<h1 class="site-title"><a href="' . site_url() . '">' . get_bloginfo('name') . '</a></h1>';
     $markup .= "\n" . '<p class="site-description">' . get_bloginfo('description') . '</p>';
     $markup .= "\n" . '</div>';
     echo $markup;

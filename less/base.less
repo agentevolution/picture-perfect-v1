@@ -17,8 +17,14 @@ This is where most of the customization takes place.
 	margin: 0 auto 20px;
 	width: 294px;
 	height: 117px;
-	.image-replacement();
+	text-indent: -9999px;
+	overflow: hidden;
 	background: url(../images/logo.png) no-repeat center top;
+
+	a {
+		height: 100%;
+		display: block;
+	}
 }
 
 p.site-description {
@@ -185,6 +191,8 @@ p.site-description {
 
 	.widgettitle {
 		font-size: @sbHeaderFontSize;
+		text-transform: uppercase;
+		font-weight: bold;
 	}
 
 }
@@ -290,8 +298,9 @@ input[type="submit"]:hover,
 		// width: 23.5%;
 	}
 
-	.widgetittle {
+	.widgettitle {
 		font-size: @fwHeaderFontSize;
+		font-weight: bold;
 	}
 
 	.footer-widgets-1 {
