@@ -120,6 +120,24 @@ function picture_perfect_frontend_setup()
 
     # Genesis post categories shortcode filter
     add_filter('genesis_post_categories_shortcode', 'agentevo_post_categories_shortcode_filter', 10, 2);
+
+    # Add site title and description markup before the sidebar
+    add_action('genesis_before_sidebar_widget_area', 'picture_perfect_site_title_description_markup');
+}
+
+
+/**
+ * Echos the site title and description markup
+ *
+ * @return void
+ */
+function picture_perfect_site_title_description_markup()
+{
+    $markup = '<div class="site-title-description-container">';
+    $markup .= "\n" . '<h1 class="site-title">' . get_bloginfo('name') . '</h1>';
+    $markup .= "\n" . '<p class="site-description">' . get_bloginfo('description') . '</p>';
+    $markup .= "\n" . '</div>';
+    echo $markup;
 }
 
 
