@@ -84,6 +84,9 @@ function picture_perfect_frontend_setup()
         )
     );
 
+    # Set default layout to sidebar-content
+    genesis_set_default_layout('sidebar-content');
+
     # Header image body class
     remove_filter('body_class', 'genesis_header_body_classes');
     add_filter('body_class', 'picture_perfect_custom_logo_body_class');
