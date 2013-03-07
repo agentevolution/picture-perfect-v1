@@ -39,6 +39,13 @@ function picture_perfect_frontend_setup()
     remove_action('genesis_after_header', 'genesis_do_nav');
     add_action('genesis_before_header', 'genesis_do_nav');
 
+    # Remove secondary navigation
+    remove_theme_support('genesis-menus');
+    add_theme_support(
+        'genesis-menus',
+        array('primary' => __('Primary Navigation Menu', 'genesis'))
+    );
+
     # Remove the header
     remove_action('genesis_header', 'genesis_do_header');
     remove_action('genesis_header', 'genesis_header_markup_open', 5);
