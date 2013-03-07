@@ -7,9 +7,27 @@ This is where most of the customization takes place.
 ******************************************************************/
 
 
-// =HEADER
+// =SITE TITLE & DESCRIPTION
 // ---------------------------------------------------------------------
 
+.site-title {
+	font-size: 70px;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 0 auto 20px;
+	width: 294px;
+	height: 117px;
+	.image-replacement();
+	background: url(../images/logo.png) no-repeat center top;
+}
+
+p.site-description {
+	text-align: center;
+	font-style: italic;
+	font-size: 24px;
+	width: 80%;
+	margin: 0 auto;
+}
 
 
 
@@ -21,28 +39,25 @@ This is where most of the customization takes place.
 	background: @navBG;
 	background: rgba(0,0,0,0.90);
 	padding: 13px 0 10px;
-
-	ul {
-
-	}
+	border-bottom: 3px solid #000;
 
 	li {
 
+		// .primary li a
 		a {
 			color: @navLinkColor;
 			font-size: @navFontSize;
-			padding: 0 13px;
-			.transition(color, 0.3s, ease);
+			padding: 1px 13px 3px;
 			border-right: 1px solid #fff;
 			border-left: 1px solid #6b6b6b;
 		}
 
-		&:last-child {
-			a { border-right: 0; }
+		&:last-child a {
+			border-right: 0;
 		}
 
-		&:first-child {
-			a { border-left: 0; }
+		&:first-child a {
+			border-left: 0;
 		}
 
 		a:hover,
@@ -53,31 +68,42 @@ This is where most of the customization takes place.
 			color: @navLinkHoverColor;
 		}
 
-		// nav.primary li li a
+		// .primary li li a
 		li a,
 		li a:link,
 		li a:visited {
-
+			background: transparent;
+			border: 0;
+			padding: 8px 13px;
+			font-size: 16px;
+			width: 176px;
 		}
 
-		// nav.primary li li a:hover
-		li a:hover,
-		li a:active {
-
+		// .primary li li a:after
+		li a:after {
+			content: "";
+			width: 176px;
+			margin: 3px 0 0;
+			display: block;
+			height: 1px;
+			background: #fff;
 		}
 
 		// nav.primary li ul
 		ul {
-		}
-
-		// nav.primary li ul a
-		ul a {
-
+			background: #000;
+			background: rgba(0,0,0,0.90);
+			padding: 10px 0px 2px;
+			// visibility: visible !important;
+			// display: block !important;
+			// left: auto !important;
+			width: 200px;
 		}
 
 		// nav.primary li ul ul
 		ul ul {
-
+			padding-top: 5px;
+			margin: -41px 0 0 200px;
 		}
 	}
 }
@@ -145,8 +171,13 @@ This is where most of the customization takes place.
 
 .sidebar {
 
+	.site-title-description-container {
+		border-bottom: 4px solid @accentBorder;
+		margin-bottom: 19px;
+	}
+
 	.widget {
-		border-bottom: 4px double #ddd;
+		border-bottom: 4px solid @accentBorder;
 		margin: 0 0 25px;
 		padding: 0 0 10px;
 		.clearfix();
@@ -201,6 +232,7 @@ input.btn-alt,
 }
 
 .btn-alt,
+a.btn-alt,
 input.btn-alt:hover {
 	color: @btnAltColor;
 }
@@ -236,7 +268,6 @@ input[type="submit"]:hover,
 #footer-widgets {
 	overflow: hidden;
 	width: 100%;
-	margin-bottom: 30px;
 
 	.widget {
 		background: transparent;
@@ -279,6 +310,10 @@ input[type="submit"]:hover,
 	color: #fff;
 	padding: 10px 0;
 
+	.one-half {
+		margin-bottom: 0;
+	}
+
 	p {
 		color: #fff;
 	}
@@ -304,6 +339,7 @@ input[type="submit"]:hover,
 
 		.credits {
 			padding: 0;
+			text-align: right;
 		}
 	}
 
