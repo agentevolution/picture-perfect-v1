@@ -63,6 +63,10 @@ function picture_perfect_frontend_setup()
     # Enable shortcode in widgets
     add_filter('widget_text', 'do_shortcode');
 
+    # Reposition the footer widgets
+    remove_action('genesis_before_footer', 'genesis_footer_widget_areas');
+    add_action('genesis_after_content', 'genesis_footer_widget_areas', 999);
+
     # Footer
     remove_action('genesis_footer', 'genesis_do_footer');
     add_action('genesis_footer', 'picture_perfect_footer');
