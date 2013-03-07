@@ -98,14 +98,13 @@ function agentevo_column_shortcode($atts, $content=null)
         )
     );
 
-    if ($first === true) {
+    if ($first == true) {
         $classes = $size . ' first';
     } else {
         $classes = $size;
     }
 
     return '<div class="' . $classes . '">' . do_shortcode($content) . '</div>';
-
 }
 
 

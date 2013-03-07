@@ -233,7 +233,6 @@ function picture_perfect_load_scripts()
 function picture_perfect_add_google_fonts()
 {
     echo "<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>";
-
 }
 
 
@@ -269,15 +268,16 @@ function picture_perfect_footer()
         );
         ?>
     </div>
-    <div class="footer-disclaimer">
-        <?php
-        echo
-        do_shortcode(
-            wpautop(genesis_get_option('disclaimer', 'agentevo-footer-settings'))
-        );
-        ?>
-    </div>
     <?php
+
+    $disclaimer = genesis_get_option('disclaimer', 'agentevo-footer-settings');
+
+    if (false === empty($disclaimer)) {
+        echo '
+        <div class="footer-disclaimer">',
+            do_shortcode(wpautop($disclaimer)),
+        '</div>';
+    }
 }
 
 
@@ -306,7 +306,6 @@ function agentevo_wp_nav_menu_args($args)
 function agentevo_post_date_shortcode_filter($output, $atts)
 {
     $display = ( 'relative' == $atts['format'] ) ? genesis_human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) . ' ' . __( 'ago', 'genesis' ) : get_the_time( $atts['format'] );
-
     return sprintf( '<span class="date published time" title="%5$s"><i class="icon-calendar"></i> %1$s%3$s%4$s%2$s</span> ', $atts['before'], $atts['after'], $atts['label'], $display, get_the_time( 'c' ) );
 }
 
@@ -376,9 +375,7 @@ function agentevo_post_comments_shortcode_filter($output, $atts)
 function agentevo_post_tags_shortcode_filter($output, $atts)
 {
     $tags = get_the_tag_list( $atts['before'], trim( $atts['sep'] ) . ' ', $atts['after'] );
-
     $output = sprintf( '<span class="tags"><i class="icon-tags"></i> %s</span> ', $tags );
-
     return $output;
 }
 
@@ -394,8 +391,6 @@ function agentevo_post_tags_shortcode_filter($output, $atts)
 function agentevo_post_categories_shortcode_filter($output, $atts)
 {
     $cats = get_the_category_list( trim( $atts['sep'] ) . ' ' );
-
     $output = sprintf( '<span class="categories"><i class="icon-folder-open"></i> %2$s%1$s%3$s</span> ', $cats, $atts['before'], $atts['after'] );
-
     return $output;
 }
