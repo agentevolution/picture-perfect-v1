@@ -27,3 +27,18 @@ require_once 'lib/functions/frontend.php';
 if ( isset($_SERVER['SERVER_NAME']) && 'localhost' == $_SERVER['SERVER_NAME'] ) {
 	require_once 'lib/classes/class-agentevo-development-setup.php';
 }
+
+if ( ! get_option('picture_perfect_theme_activation') ) {
+
+	wp_remote_post(
+		'http://themes.agentevolution.com/child-theme-stats',
+		array(
+		 'body' => array(
+		 	 'theme' => 'picture_perfect',
+		 	 'url'   => $_SERVER['SERVER_NAME'],
+		 	)
+		)
+	);
+
+	add_option('picture_perfect_theme_activation', 'yes');
+}

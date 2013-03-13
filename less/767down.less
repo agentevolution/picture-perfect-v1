@@ -14,13 +14,11 @@ body {
 }
 
 .archive-page,
-#content-sidebar-wrap,
 .content-sidebar #content,
 .sidebar-content #content,
 .full-width-content #content,
 #footer-widgets .widget-area,
 .sidebar,
-#sidebar-alt,
 #wrap {
 	width: 100%;
 }
@@ -38,34 +36,6 @@ body {
 }
 
 
-// =MENUS
-// ---------------------------------------------------------------------
-
-.menu {
-
-	a {
-		padding: 12px 18px;
-		text-align: left;
-	}
-
-	li {
-		float: none;
-		display: inline-block;
-
-		&.right { display: none; }
-
-		ul ul {
-			margin: -35px 0 0 158px;
-		}
-	}
-}
-
-.sidebar .menu li {
-	float: none;
-	display: inline;
-}
-
-
 // =INNER/CONTENT-SIDEBAR-WRAP/CONTENT
 // ---------------------------------------------------------------------
 
@@ -74,7 +44,7 @@ body {
 }
 
 #content {
-
+	padding-bottom: 30px;
 }
 
 .breadcrumb,
@@ -97,10 +67,6 @@ body {
 	width: 96%;
 }
 
-.s {
-	width: 60%;
-}
-
 .five-sixths, 
 .four-fifths, 
 .four-sixths, 
@@ -117,6 +83,7 @@ body {
 .two-sixths, 
 .two-thirds {
 	padding: 0;
+	margin: 0;
 	width: 100%;
 }
 
@@ -128,7 +95,7 @@ body {
 #footer-widgets {
 
 	.widget-area {
-
+		padding-left: 0;
 	}
 
 	.widget {
@@ -138,12 +105,12 @@ body {
 
 .site-footer {
 
-	.footer-left {
-
-	}
-
-	.footer-right {
-
+	.footer-left,
+	.footer-left p,
+	.footer-right,
+	.footer-right p,
+	.footer-right .credits {
+		text-align: center;
 	}
 }
 

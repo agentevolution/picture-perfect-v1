@@ -48,6 +48,9 @@ select, input, textarea {
 
 // Avoid IE8 Max Width bug
 @media (max-width: 9000px) {
+
+	select,
+	input,
 	iframe,
 	img {
 		max-width: 100%;
@@ -92,8 +95,6 @@ a:hover i {
 		padding: 24px 20px;
 		padding: 1.5rem 1.25rem;
 		position: relative;
-		.transition(color, 0.4s);
-
 		&:hover { text-decoration: none; }
 	}
 
@@ -111,22 +112,12 @@ a:hover i {
 		&.highlight-menu-item {
 			margin-left: 20px;
 			margin-left: 1.25rem;
-
-			a {
-				background-color: #1e1e1e;
-			}
-
-			a:hover {
-				background-color: #ff2a00;
-			}
 		}
 	}
 
 	li li a,
 	li li a:link,
 	li li a:visited {
-		background-color: #fff;
-		border: 1px solid #ccc;
 		border-top: none;
 		padding: 20px;
 		padding: 1.25rem;
@@ -357,6 +348,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5 {
 	margin: 0 0 10px;
+	line-height: 100%;
 
 	a {}
 }
@@ -365,8 +357,7 @@ h1, .h1 {
 	font-size: 24px;
 }
 
-h2, h2 a, .h2,
-.taxonomy-description h1 {
+h2, h2 a, .h2, .taxonomy-description h1 {
 	font-size: 22px;
 }
 
@@ -392,7 +383,9 @@ h5, .h5 {
 
 .post h2.entry-title a,
 h1.entry-title {
-	font-size: 32px;
+	font-size: 36px;
+	font-weight: bold;
+	color: @headingsColor;
 }
 
 
@@ -527,6 +520,7 @@ h1.entry-title {
 #content {
 	float: left;
 	width: 65%;
+	padding-bottom: 15px;
 }
 
 .full-width-content #content {
@@ -626,6 +620,7 @@ p.subscribe-to-comments {
 	float: right;
 	font-size: @baseFontSize;
 	width: 32%;
+	overflow: hidden;
 }
 
 .sidebar p {
@@ -670,14 +665,8 @@ p.subscribe-to-comments {
 .widget_archive select {
 	display: inline;
 	font-size: 12px;
-	margin: 10px 10px 0;
+	margin: 10px 10px 0 0;
 	padding: 3px;
-	width: 278px; // FIXME
-}
-
-#sidebar-alt #cat,
-#sidebar-alt .widget_archive select {
-	width: 128px; // FIXME
 }
 
 
@@ -738,16 +727,14 @@ input[type="button"],
 	padding: 4px 14px;
 	margin-bottom: 0;
 	*margin-left: .3em;
-	font-size: 14px;
-	line-height: 20px;
-	*line-height: 20px;
 	text-align: center;
 	vertical-align: middle;
 	cursor: pointer;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
 	border: 0;
+	text-transform: uppercase;
+	font-size: 20px;
+	line-height: 100%;
+	font-weight: bold;
 }
 
 .btn-nil {
@@ -777,9 +764,7 @@ input[type="button"],
 	color: #333333;
 	text-decoration: none;
 	background-color: #e6e6e6;
-	*background-color: #d9d9d9;
-	/* Buttons in IE7 don't get borders, so darken on hover */
-
+	*background-color: #d9d9d9; // Buttons in IE7 don't get borders, so darken on hover
 	background-position: 0 -15px;
 	-webkit-transition: background-position 0.1s linear;
 	-moz-transition: background-position 0.1s linear;
@@ -797,9 +782,6 @@ input[type="button"],
 	padding: 9px 14px;
 	font-size: 16px;
 	line-height: normal;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
 }
 
 .btn-small {
@@ -841,15 +823,11 @@ input[type="button"],
 	padding: 5px 0 0 10px;
 }
 
-nav.primary .searchform {
-	float: right;
-}
-
 .s {
 	font-size: 12px;
-	margin: 5px 2px 0 0;
+	margin: 5px 2px 10px 0;
 	padding: 4px 5px;
-	width: 195px; // FIXME
+	width: 90%;
 }
 
 .sidebar .gform_footer {
@@ -952,7 +930,7 @@ nav.primary .searchform {
 
 .thread-alt,
 .thread-even {
-	background-color: #f7f7f7; // FIXME
+	background-color: #f7f7f7;
 }
 
 .alt,
@@ -961,5 +939,5 @@ nav.primary .searchform {
     border-radius: 4px;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
-    border: 1px solid #ccc; // FIXME
+    border: 1px solid #000;
 }

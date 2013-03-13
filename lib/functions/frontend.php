@@ -51,9 +51,6 @@ function picture_perfect_frontend_setup()
     remove_action('genesis_header', 'genesis_header_markup_open', 5);
     remove_action('genesis_header', 'genesis_header_markup_close', 15);
 
-    # Enqueue Scripts
-    add_action('wp_enqueue_scripts', 'picture_perfect_load_scripts');
-
     # Responsive Meta Tag
     add_action('genesis_meta', 'picture_perfect_viewport_meta_tag');
 
@@ -112,6 +109,9 @@ function picture_perfect_frontend_setup()
     # Genesis post comment shortcode filter
     add_filter('genesis_post_comments_shortcode', 'agentevo_post_comments_shortcode_filter', 10, 2);
 
+    # Genesis search form filter
+    add_filter('genesis_search_form', 'agentevo_custom_search_form', 10, 1);
+
     # Genesis post tags shortcode filter
     add_filter('genesis_post_tags_shortcode', 'agentevo_post_tags_shortcode_filter', 10, 2);
 
@@ -165,7 +165,7 @@ function picture_perfect_custom_logo_body_class($classes)
  */
 function picture_perfect_favicon_filter()
 {
-    return get_stylesheet_directory_uri().'/images/favicon.ico';
+    return get_stylesheet_directory_uri() . '/images/favicon.ico';
 }
 
 
@@ -183,7 +183,7 @@ function picture_perfect_load_ie8_css()
         </style>
     <![endif]-->
     <?php
-}
+} // FIXME
 
 
 /**
@@ -210,17 +210,6 @@ echo
 '<!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->';
-}
-
-
-/**
- * Enqueues javascripts
- *
- * @return void
- */
-function picture_perfect_load_scripts()
-{
-
 }
 
 
@@ -361,6 +350,36 @@ function agentevo_post_comments_shortcode_filter($output, $atts)
     $comments = sprintf( '<a href="%s">%s</a>', get_comments_link(), $comments );
     $output = sprintf( '<span class="post-comments"><i class="icon-comment"></i> %2$s%1$s%3$s</span>', $comments, $atts['before'], $atts['after'] );
     return $output;
+}
+
+
+/**
+ * Customizes the search form
+ *
+ * @param string $form the form markup
+ */
+function agentevo_custom_search_form($form)
+{
+    $search_text = get_search_query() ? esc_attr( apply_filters( 'the_search_query', get_search_query() ) ) : apply_filters( 'genesis_search_text', esc_attr__( 'Search this website', 'genesis' ) . '&#x02026;' );
+
+    $button_text = apply_filters( 'genesis_search_button_text', esc_attr__( 'Search', 'genesis' ) );
+
+    $onfocus = " onfocus=\"if (this.value == '$search_text') {this.value = '';}\"";
+    $onblur  = " onblur=\"if (this.value == '') {this.value = '$search_text';}\"";
+    
+    /** Empty label, by default. Filterable. */
+    $label = apply_filters( 'genesis_search_form_label', '' );
+
+    $form = '
+        <form method="get" class="searchform search-form" action="' . home_url() . '/" >
+            ' . $label . '
+            <i class="icon-search"></i>
+            <input type="text" value="' . esc_attr( $search_text ) . '" name="s" class="s search-input"' . $onfocus . $onblur . ' />
+            <input type="submit" class="searchsubmit search-submit" value="' . esc_attr( $button_text ) . '" />
+        </form>
+    ';
+
+    return $form;
 }
 
 

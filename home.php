@@ -16,8 +16,8 @@ function picture_perfect_home_genesis_meta()
 	);
 
 	if (false === any_picture_perfect_sidebar_is_active($sidebar_widget_areas)) {
-		// return;
-		// FIXME
+		add_filter('body_class', 'picture_perfect_blog_home_page_body_class');
+		return;
 	}
 
 	# Custom body class
@@ -26,6 +26,20 @@ function picture_perfect_home_genesis_meta()
 	# Remove the loop and add a custom loop
 	remove_action('genesis_loop', 'genesis_do_loop');
 	add_action('genesis_loop', 'picture_perfect_home_loop_helper');
+}
+
+
+/**
+ * Adds a custom body class on the home page
+ *
+ * @param array $classes the current body classes
+ *
+ * @return array modified classes
+ */
+function picture_perfect_blog_home_page_body_class($classes)
+{
+   $classes[] = 'blog-home-page';
+   return $classes;
 }
 
 

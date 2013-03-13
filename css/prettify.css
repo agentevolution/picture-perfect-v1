@@ -114,3 +114,7 @@ pre code {
 	font-size: 24px;
 	margin-bottom: 20px;
 }
+
+.page-shortcodes .shortcodes-rendered {
+  margin-bottom: 10px;
+}
