@@ -38,6 +38,7 @@ function picture_perfect_admin_setup()
 
     # Unregister unused sidebar
     unregister_sidebar('sidebar-alt');
+    unregister_sidebar('header-right');
 
     # Remove Unused Page Layouts
     genesis_unregister_layout('content-sidebar-sidebar');
@@ -129,7 +130,7 @@ function picture_perfect_register_sidebars()
         array(
          'id'          => 'home-right',
          'name'        => 'Home Right',
-         'description' => 'This is the Home Right section',
+         'description' => 'This is the Home Right section. This is a great place for a "custom menu" widget.',
         )
     );
 }

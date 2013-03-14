@@ -1,8 +1,16 @@
 <?php
+/**
+ * Home
+ *
+ * PHP version 5
+ *
+ * @package  PicturePerfect
+ * @author   Agent Evolution <support@agentevolution.com>
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     http://themes.agentevolution.com
+ */
 
-remove_action('genesis_after_content', 'genesis_footer_widget_areas', 999);
 
-add_filter('genesis_pre_get_option_site_layout', '__genesis_return_full_width_content');
 add_action('genesis_meta', 'picture_perfect_home_genesis_meta');
 /**
  * Add widget support for homepage. If no widgets active, display the default loop.
@@ -19,6 +27,9 @@ function picture_perfect_home_genesis_meta()
 		add_filter('body_class', 'picture_perfect_blog_home_page_body_class');
 		return;
 	}
+
+	add_filter('genesis_pre_get_option_site_layout', '__genesis_return_full_width_content');
+	remove_action('genesis_after_content', 'genesis_footer_widget_areas', 999);
 
 	# Custom body class
 	add_filter('body_class', 'picture_perfect_custom_home_page_body_class');
@@ -59,6 +70,8 @@ function picture_perfect_custom_home_page_body_class($classes)
 
 /**
  * Display widget content for homepage sections
+ *
+ * @return void
  */
 function picture_perfect_home_loop_helper()
 {

@@ -1,4 +1,4 @@
-/*global jQuery, document, window */
+/*global jQuery, window */
 (function($) {
 
 /**

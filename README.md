@@ -16,8 +16,10 @@ extremely verticle causing a terrible stretch of the background image.
 
 ## TODO
 * listing-search page - list of recommended IDX providers
-* Some kind of "Setup Theme" function
+* Some kind of "Setup Theme" function that runs migrations (puts widgets in widget areas, etc.)?
 * Add gravity forms form to contact page
+* Dynamically size and center any logo given the original dimensions
+
 
 
 ## Genesis-child TODO

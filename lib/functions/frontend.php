@@ -57,6 +57,9 @@ function picture_perfect_frontend_setup()
     # Add google fonts link to head
     add_action('genesis_meta', 'picture_perfect_add_google_fonts', 5);
 
+    # Enqueue theme.js
+    add_action('wp_enqueue_scripts', 'picture_perfect_javascripts');
+
     # Enable shortcode in widgets
     add_filter('widget_text', 'do_shortcode');
 
@@ -123,6 +126,14 @@ function picture_perfect_frontend_setup()
 
     # Add site title and description markup before the sidebar
     add_action('genesis_before_sidebar_widget_area', 'picture_perfect_site_title_description_markup');
+
+    # Add the hidden site title and description markup.
+    # This markup will appear at the top of the content on small screen sizes
+    # and on full width content pages. This is due to the site title and description
+    # showing up before the sidebar. This ensures that a site title and description
+    # is visible even when there is no sidebar or the sidebar is pushed down
+    # below the content.
+    add_action('genesis_before_content', 'picture_perfect_site_title_description_markup', 1);
 }
 
 
@@ -155,7 +166,7 @@ function picture_perfect_custom_logo_body_class($classes)
     }
 
     return $classes;
-}
+} // FIXME: May not need this function
 
 
 /**
@@ -222,6 +233,17 @@ echo
 function picture_perfect_add_google_fonts()
 {
     echo "<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>";
+}
+
+
+/**
+ * Enqueues theme.js
+ *
+ * @return void
+ */
+function picture_perfect_javascripts()
+{
+    wp_enqueue_script('picture_perfect', CHILD_URL . '/js/theme.js', array('jquery'), false, true);
 }
 
 

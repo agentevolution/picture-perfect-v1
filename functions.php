@@ -24,9 +24,24 @@ require_once 'lib/functions/admin.php';
 require_once 'lib/functions/frontend.php';
 
 # Include functions that should run in development only
+# Else serve css/style.css
 if ( isset($_SERVER['SERVER_NAME']) && 'localhost' == $_SERVER['SERVER_NAME'] ) {
 	require_once 'lib/classes/class-agentevo-development-setup.php';
+} else {
+	add_filter('stylesheet_uri', 'picture_perfect_stylesheet_uri', 10, 2);
 }
+
+
+/**
+ * Returns the path to the style.css file
+ *
+ * @return string path to the style.css file
+ */
+function picture_perfect_stylesheet_uri($stylesheet_uri, $stylesheet_dir_uri)
+{
+	return $stylesheet_dir_uri . '/css/style.css';
+}
+
 
 if ( ! get_option('picture_perfect_theme_activation') ) {
 
