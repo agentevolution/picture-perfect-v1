@@ -33,6 +33,8 @@ class Agentevo_Theme_Options
 	 *
 	 * @see add_action('customize_register', $func)
 	 * @param WP_Customize_Manager $wp_customize
+	 *
+	 * @return void
 	 */
 	public static function register($wp_customize)
 	{
@@ -85,17 +87,24 @@ class Agentevo_Theme_Options
 	 */
 	public static function render()
 	{
+		global $post;
+
 		?>
 		<!-- BEGIN CUSTOMIZER CSS -->
 		<style>
 		<?php
-		self::generate_css(
-			'body',
-			'background',
-			'default_background_image',
-			'url(',
-			') no-repeat center center fixed'
-		);
+
+		# Only show default image if no post thumbnail exists or it is not a single post and not a single page
+		if (false === has_post_thumbnail($post->ID) || false === is_single() && false === is_page()) {
+			self::generate_css(
+				'body',
+				'background',
+				'default_background_image',
+				'url(',
+				') no-repeat center center fixed'
+			);			
+		}
+
 		?>
 		</style>
 		<?php
@@ -139,5 +148,76 @@ class Agentevo_Theme_Options
 		}
 
 		return $output;
+	}
+
+
+	/**
+	 * Returns the mod ids of a section
+	 *
+	 * @param string $section the section id
+	 *
+	 * @return array mod ids of $section
+	 */
+	public static function get_section_mods($section)
+	{
+		switch($section) {
+
+			case 'title_tagline':
+				$output = array(
+					'',
+				);
+				break;
+
+			case 'general_settings':
+				$output = array(
+					'',
+				);
+				break;
+
+			default:
+				$output = false;
+		}
+
+		return $output;
+	}
+
+
+	/**
+	 * Returns an array of mod ids
+	 *
+	 * @return array mod ids
+	 */
+	public static function get_mods()
+	{
+		return array(
+			'default_background_image',
+		);
+	}
+
+
+	/**
+	 * Removes mods of the selected 'remove_section_mods' value
+	 *
+	 * @return void
+	 */
+	public static function remove_section_mods()
+	{
+		$section = get_theme_mod('remove_section_mods');
+
+		if (false === $section) {
+			return;
+		}
+
+		$mods = self::get_section_mods($section);
+
+		if (false === is_array($mods)) {
+			return;
+		}
+
+		foreach($mods as $mod) {
+			remove_theme_mod($mod);
+		}
+
+		remove_theme_mod('remove_section_mods');
 	}
 }

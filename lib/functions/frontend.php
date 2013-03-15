@@ -134,6 +134,9 @@ function picture_perfect_frontend_setup()
     # is visible even when there is no sidebar or the sidebar is pushed down
     # below the content.
     add_action('genesis_before_content', 'picture_perfect_site_title_description_markup', 1);
+
+    # Outputs the CSS for making the featured image the background image
+    add_action('wp_head', 'picture_perfect_background_image_css', 9999);
 }
 
 
@@ -434,4 +437,34 @@ function agentevo_post_categories_shortcode_filter($output, $atts)
     $cats = get_the_category_list( trim( $atts['sep'] ) . ' ' );
     $output = sprintf( '<span class="categories"><i class="icon-folder-open"></i> %2$s%1$s%3$s</span> ', $cats, $atts['before'], $atts['after'] );
     return $output;
+}
+
+
+/**
+ * Outputs CSS that makes the featured image the body background
+ *
+ * @return void
+ */
+function picture_perfect_background_image_css()
+{
+    global $post;
+
+    $id = get_post_thumbnail_id($post->ID);
+
+    $thumbnail_url = wp_get_attachment_url($id);
+
+    // return if no post thumnbail, not a single post, and not a blog post
+    if (false === $thumbnail_url || false === is_single() && false === is_page()) {
+        return;
+    }
+
+    echo '
+    <!-- BEGIN FEATURED IMAGE BACKGROUND CSS -->
+    <style>
+        body {
+            background: url(', $thumbnail_url, ') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+    ';
 }
