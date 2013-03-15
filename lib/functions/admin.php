@@ -45,6 +45,12 @@ function picture_perfect_admin_setup()
     genesis_unregister_layout('sidebar-sidebar-content');
     genesis_unregister_layout('sidebar-content-sidebar');
 
+    # Unregister genesis nav menus
+    remove_theme_support( 'genesis-menus' );
+ 
+    # Register primary nav
+    add_theme_support('genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis' ) ));
+
     # Add support for 3 footer widgets
     add_theme_support('genesis-footer-widgets', 3);
 

@@ -41,6 +41,7 @@ class Agentevo_Theme_Options
 		# Sections
 		# ==========================================================================
 
+		# General Settings
 		$wp_customize->add_section(
 			'general_settings',
 			array(
@@ -49,9 +50,74 @@ class Agentevo_Theme_Options
 			)
 		);
 
+		# Text Colors
+		$wp_customize->add_section(
+			'text_colors',
+			array(
+				'title'    => __('Text Colors', 'agentevo'),
+				'priority' => 36,
+			)
+		);
+
+
+		# Background Colors
+		$wp_customize->add_section(
+			'background_colors',
+			array(
+				'title'    => __('Background Colors', 'agentevo'),
+				'priority' => 37,
+			)
+		);
+
 
 		# Settings & Controls
 		# ==========================================================================
+
+
+		/* Title Tagline Settings
+		-----------------------------------------------*/
+
+		$wp_customize->add_setting(
+			'logo_image',
+			array(
+				'default' => get_stylesheet_directory_uri() . '/images/logo.png'
+			)
+		);
+
+
+		$wp_customize->add_setting(
+			'logo_display_type',
+			array('default' => 'text')
+		);
+
+
+		$wp_customize->add_control(
+			'logo_display_type',
+			array(
+			'label'      => __('Logo Display Type', 'agentevo' ),
+			'section'    => 'title_tagline',
+			'settings'   => 'logo_display_type',
+			'priority'   => 1,
+			'type'       => 'radio',
+			'choices'    => array(
+				'image'  => 'Custom Image',
+				'text'   => 'Use site title and tagline as logo'
+			)
+		) );
+
+
+		# This never gets rendered here but it is used in frontend.php
+		$wp_customize->add_control(
+			new WP_Customize_Image_Control(
+				$wp_customize,
+				'logo_image',
+				array(
+					'label'    => __('Logo Image', 'agentevo'),
+					'section'  => 'title_tagline',
+					'priority' => 2
+				)
+			)
+		);
 
 
 		/* General Settings
@@ -64,6 +130,8 @@ class Agentevo_Theme_Options
 			)
 		);
 
+
+		# This never gets rendered here but it is used in frontend.php
 		$wp_customize->add_control(
 			new WP_Customize_Image_Control(
 				$wp_customize,
@@ -77,10 +145,164 @@ class Agentevo_Theme_Options
 		);
 
 
-		/* General Settings
+		/* Text Colors
 		-----------------------------------------------*/
 
+		$wp_customize->add_setting('text_color');
+		$wp_customize->add_setting('link_color');
+		$wp_customize->add_setting('link_hover_color');
+		$wp_customize->add_setting('nav_link_color');
+		$wp_customize->add_setting('nav_link_hover_color');
+		$wp_customize->add_setting('footer_text_color');
+		$wp_customize->add_setting('icon_color');
 
+
+		# TEXT COLOR
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'text_color',
+				array(
+					'label'    => __('Standard Text Color', 'agentevo'),
+					'section'  => 'text_colors',
+					'priority' => 1
+				)
+			)
+		);
+
+
+		# LINK COLOR
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'link_color',
+				array(
+					'label'    => __('Inline Link Color', 'agentevo'),
+					'section'  => 'text_colors',
+					'priority' => 2
+				)
+			)
+		);
+
+
+		# LINK HOVER COLOR
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'link_hover_color',
+				array(
+					'label'    => __('Inline Link Hover Color', 'agentevo'),
+					'section'  => 'text_colors',
+					'priority' => 3
+				)
+			)
+		);
+
+
+		# NAV LINK COLOR
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'nav_link_color',
+				array(
+					'label'    => __('Nav Link Color', 'agentevo'),
+					'section'  => 'text_colors',
+					'priority' => 4
+				)
+			)
+		);
+
+
+		# NAV LINK HOVER COLOR
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'nav_link_hover_color',
+				array(
+					'label'    => __('Nav Link Hover Color', 'agentevo'),
+					'section'  => 'text_colors',
+					'priority' => 5
+				)
+			)
+		);
+
+
+		# FOOTER TEXT COLOR
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'footer_text_color',
+				array(
+					'label'    => __('Footer Text Color', 'agentevo'),
+					'section'  => 'text_colors',
+					'priority' => 6
+				)
+			)
+		);
+
+
+		# ICON COLOR
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'icon_color',
+				array(
+					'label'    => __('Default Icon Color', 'agentevo'),
+					'section'  => 'text_colors',
+					'priority' => 7
+				)
+			)
+		);
+
+
+		/* Background Colors
+		-----------------------------------------------*/
+
+		$wp_customize->add_setting('content_bg');
+		$wp_customize->add_setting('nav_footer_bg');
+		$wp_customize->add_setting('border_color');
+
+
+		# CONTENT BACKGROUND
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'content_bg',
+				array(
+					'label'    => __('Content Background', 'agentevo'),
+					'section'  => 'background_colors',
+					'priority' => 1
+				)
+			)
+		);
+
+
+		# TOP NAV & FOOTER BACKGROUND
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'nav_footer_bg',
+				array(
+					'label'    => __('Top Nav & Footer Background', 'agentevo'),
+					'section'  => 'background_colors',
+					'priority' => 2
+				)
+			)
+		);
+
+
+		# BORDER COLOR
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'border_color',
+				array(
+					'label'    => __('Border Color', 'agentevo'),
+					'section'  => 'background_colors',
+					'priority' => 3
+				)
+			)
+		);
 	}
 
 
@@ -93,12 +315,124 @@ class Agentevo_Theme_Options
 	 */
 	public static function render()
 	{
-		?>
-		<!-- BEGIN CUSTOMIZER CSS -->
-		<style>
+		echo '<!-- BEGIN CUSTOMIZER CSS -->';
+		echo '<style>';
 
-		</style>
-		<?php
+		# TEXT COLOR
+		self::generate_css(
+			'
+			body,
+			button,
+			input,
+			select,
+			textarea,
+			p,
+			.home .home-right .menu li a,
+			.post h2.entry-title a,
+			h1.entry-title,
+			h2 a,
+			h4 a',
+			'color',
+			'text_color'
+		);
+
+
+		# LINK COLOR
+		self::generate_css(
+			'a, a:visited',
+			'color',
+			'link_color'
+		);
+
+
+		# LINK HOVER COLOR
+		self::generate_css(
+			'a:hover, a:focus',
+			'color',
+			'link_hover_color'
+		);
+
+
+		# NAV LINK COLOR
+		self::generate_css(
+			'nav.primary li a',
+			'color',
+			'nav_link_color'
+		);
+
+		# NAV LINK BORDER COLOR
+		self::generate_css(
+			'nav.primary li a:after',
+			'background',
+			'nav_link_color'
+		);
+
+
+		# NAV LINK HOVER COLOR
+		self::generate_css(
+			'.primary li a:hover,.primary li a:active,.primary li .current_page_item a,.primary li .current-cat a,.primary li .current-menu-item a',
+			'color',
+			'nav_link_hover_color'
+		);
+
+
+		# FOOTER TEXT COLOR
+		self::generate_css(
+			'.site-footer, .site-footer p, .site-footer .credits a, .site-footer .agent-social-icons a, .site-footer .agent-social-icons a:visited, .site-footer i[class^="icon-"]',
+			'color',
+			'footer_text_color'
+		);
+
+
+		# ICON COLOR
+		self::generate_css(
+			'.agent-social-icons a, .agent-social-icons a:visited, i[class^="icon-"]',
+			'color',
+			'icon_color'
+		);
+
+
+		# Render the content background with opacity using RGBA
+		if (get_theme_mod('content_bg')) {
+			echo '
+			.home .home-right,
+			#inner {
+				background: ' . get_theme_mod('content_bg') . ';
+				background: rgba(' . self::hex2rgb(get_theme_mod('content_bg')) . ', 0.9);
+			}';	
+		}
+		
+
+		# NAV/FOOTER BACKGROUND
+		self::generate_css(
+			'nav.primary, .site-footer',
+			'background',
+			'nav_footer_bg'
+		);
+
+
+		# BORDER COLOR
+		self::generate_css(
+			'.sidebar .widget,
+			.sidebar .site-title-description-container,
+			#footer-widgets,
+			.home .home-right .menu li a,
+			.clear-line',
+			'border-color',
+			'border_color'
+		);
+
+
+		# LOGO IMAGE
+		self::generate_css(
+			'.site-title',
+			'background',
+			'logo_image',
+			'url(',
+			') no-repeat center top'
+		);
+
+		echo '</style>';
 	}
 
 
@@ -210,5 +544,32 @@ class Agentevo_Theme_Options
 		}
 
 		remove_theme_mod('remove_section_mods');
+	}
+
+
+	/**
+	 * Converts hex into rgb
+	 *
+	 * @param string $hex the hex value to convert
+	 *
+	 * @return string the rgb value
+	 */
+	public static function hex2rgb($hex)
+	{
+	   $hex = str_replace("#", "", $hex);
+
+	   if (strlen($hex) == 3) {
+	      $r = hexdec(substr($hex,0,1).substr($hex,0,1));
+	      $g = hexdec(substr($hex,1,1).substr($hex,1,1));
+	      $b = hexdec(substr($hex,2,1).substr($hex,2,1));
+	   } else {
+	      $r = hexdec(substr($hex,0,2));
+	      $g = hexdec(substr($hex,2,2));
+	      $b = hexdec(substr($hex,4,2));
+	   }
+
+	   $rgb = array($r, $g, $b);
+
+	   return implode(",", $rgb); // returns the rgb values separated by commas
 	}
 }
