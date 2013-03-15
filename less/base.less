@@ -21,10 +21,12 @@ This is where most of the customization takes place.
 	overflow: hidden;
 	background: url(../images/logo.png) no-repeat center top;
 	background-size: contain;
+	padding-bottom: 0;
 
 	a {
 		height: 100%;
 		display: block;
+		color: @textColor;
 	}
 }
 
@@ -34,6 +36,24 @@ p.site-description {
 	font-size: 24px;
 	width: 80%;
 	margin: 0 auto;
+}
+
+.title-type-text {
+	.site-title,
+	.site-title a {
+		background: transparent;
+		text-indent: 0;
+		width: auto;
+		height: auto;
+		font-size: 60px;
+		line-height: 100%;
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
+
+	.site-title a:hover {
+		text-decoration: none;
+	}
 }
 
 /* Hide on large screens */

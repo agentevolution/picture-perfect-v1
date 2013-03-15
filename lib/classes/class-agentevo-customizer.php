@@ -79,18 +79,19 @@ class Agentevo_Theme_Options
 
 		$wp_customize->add_setting(
 			'logo_image',
-			array(
-				'default' => get_stylesheet_directory_uri() . '/images/logo.png'
-			)
+			array('default' => get_stylesheet_directory_uri() . '/images/logo.png')
 		);
 
 
 		$wp_customize->add_setting(
 			'logo_display_type',
-			array('default' => 'text')
+			array('default' => 'image')
 		);
 
+		$wp_customize->add_setting('site_title_desc_color');
 
+
+		# LOGO DISPLAY TYPE
 		$wp_customize->add_control(
 			'logo_display_type',
 			array(
@@ -106,15 +107,30 @@ class Agentevo_Theme_Options
 		) );
 
 
+		# LOGO IMAGE
 		# This never gets rendered here but it is used in frontend.php
 		$wp_customize->add_control(
 			new WP_Customize_Image_Control(
 				$wp_customize,
 				'logo_image',
 				array(
-					'label'    => __('Logo Image', 'agentevo'),
+					'label'    => __('Logo Image - Suggested Dimensions are 294 X 117', 'agentevo'),
 					'section'  => 'title_tagline',
 					'priority' => 2
+				)
+			)
+		);
+
+
+		# SITE TITLE DESCRIPTION COLOR
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'site_title_desc_color',
+				array(
+					'label'    => __('Site Title and Description Color', 'agentevo'),
+					'section'  => 'title_tagline',
+					'priority' => 3
 				)
 			)
 		);
@@ -337,6 +353,15 @@ class Agentevo_Theme_Options
 		);
 
 
+		# SITE TITLE DESC COLOR
+		self::generate_css(
+			'.site-title-description-container .site-title a,
+			.site-title-description-container .site-description',
+			'color',
+			'site_title_desc_color'
+		);
+
+
 		# LINK COLOR
 		self::generate_css(
 			'a, a:visited',
@@ -425,11 +450,11 @@ class Agentevo_Theme_Options
 
 		# LOGO IMAGE
 		self::generate_css(
-			'.site-title',
+			'body .site-title',
 			'background',
 			'logo_image',
 			'url(',
-			') no-repeat center top'
+			') no-repeat center top; background-size: contain'
 		);
 
 		echo '</style>';

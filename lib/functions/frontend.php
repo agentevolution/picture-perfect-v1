@@ -148,7 +148,13 @@ function picture_perfect_frontend_setup()
 function picture_perfect_site_title_description_markup()
 {
     $markup = '<div class="site-title-description-container">';
-    $markup .= "\n" . '<h1 class="site-title"><a href="' . site_url() . '">' . get_bloginfo('name') . '</a></h1>';
+
+    if ( is_home() || is_front_page() ) {
+        $markup .= "\n" . '<h1 class="site-title"><a href="' . site_url() . '">' . get_bloginfo('name') . '</a></h1>';
+    } else {
+        $markup .= "\n" . '<p class="site-title"><a href="' . site_url() . '">' . get_bloginfo('name') . '</a></p>';
+    }
+
     $markup .= "\n" . '<p class="site-description">' . get_bloginfo('description') . '</p>';
     $markup .= "\n" . '</div>';
     echo $markup;
@@ -156,7 +162,7 @@ function picture_perfect_site_title_description_markup()
 
 
 /**
- * Adds header-image to body classes if the site title is an image
+ * Adds title-type-text to body classes if the site title is an image
  *
  * @param array $classes the current body classes
  *
@@ -164,12 +170,14 @@ function picture_perfect_site_title_description_markup()
  */
 function picture_perfect_custom_logo_body_class($classes)
 {
-    if ('image' === get_theme_mod('logo_display_type')) {
+    if ( 'text' == get_theme_mod('logo_display_type') ) {
+        $classes[] = 'title-type-text';        
+    } else {
         $classes[] = 'header-image';
     }
 
     return $classes;
-} // FIXME: May not need this function
+}
 
 
 /**
