@@ -75,6 +75,12 @@ class Agentevo_Theme_Options
 				)
 			)
 		);
+
+
+		/* General Settings
+		-----------------------------------------------*/
+
+
 	}
 
 
@@ -87,25 +93,10 @@ class Agentevo_Theme_Options
 	 */
 	public static function render()
 	{
-		global $post;
-
 		?>
 		<!-- BEGIN CUSTOMIZER CSS -->
 		<style>
-		<?php
 
-		# Only show default image if no post thumbnail exists or it is not a single post and not a single page
-		if (false === has_post_thumbnail($post->ID) || false === is_single() && false === is_page()) {
-			self::generate_css(
-				'body',
-				'background',
-				'default_background_image',
-				'url(',
-				') no-repeat center center fixed'
-			);			
-		}
-
-		?>
 		</style>
 		<?php
 	}

@@ -135,8 +135,8 @@ function picture_perfect_frontend_setup()
     # below the content.
     add_action('genesis_before_content', 'picture_perfect_site_title_description_markup', 1);
 
-    # Outputs the CSS for making the featured image the background image
-    add_action('wp_head', 'picture_perfect_background_image_css', 9999);
+    # Outputs the backstretch js
+    add_action('wp_footer', 'picture_perfect_backstretch_js', 9999);
 }
 
 
@@ -246,6 +246,7 @@ function picture_perfect_add_google_fonts()
  */
 function picture_perfect_javascripts()
 {
+    wp_enqueue_script('backstretch', CHILD_URL . '/js/jquery.backstretch.min.js', array('jquery'), false, true);
     wp_enqueue_script('picture_perfect', CHILD_URL . '/js/theme.js', array('jquery'), false, true);
 }
 
@@ -441,30 +442,27 @@ function agentevo_post_categories_shortcode_filter($output, $atts)
 
 
 /**
- * Outputs CSS that makes the featured image the body background
+ * Echos the javascript for the backstretch image to the footer
  *
  * @return void
  */
-function picture_perfect_background_image_css()
+function picture_perfect_backstretch_js()
 {
     global $post;
 
-    $id = get_post_thumbnail_id($post->ID);
+    $thumb_id = get_post_thumbnail_id($post->ID);
+    $thumb_url = wp_get_attachment_url($thumb_id);
 
-    $thumbnail_url = wp_get_attachment_url($id);
-
-    // return if no post thumnbail, not a single post, and not a blog post
-    if (false === $thumbnail_url || false === is_single() && false === is_page()) {
-        return;
+    // use default if no post thumnbail, not a single post, and not a blog post
+    if (false === $thumb_url || false === is_single() && false === is_page()) {
+        $thumb_url = get_theme_mod('default_background_image');
     }
 
-    echo '
-    <!-- BEGIN FEATURED IMAGE BACKGROUND CSS -->
-    <style>
-        body {
-            background: url(', $thumbnail_url, ') no-repeat center center fixed;
-            background-size: cover;
-        }
-    </style>
-    ';
+    if (empty($thumb_url)) {
+        $thumb_url = CHILD_URL . '/images/PicturePerfect.jpg';
+    }
+
+    ?>
+    <script>jQuery.backstretch("<?php echo $thumb_url; ?>");</script>
+    <?php
 }
