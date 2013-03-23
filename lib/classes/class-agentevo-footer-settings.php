@@ -52,7 +52,7 @@ class Agentevo_Footer_Settings extends Genesis_Admin_Boxes
         # Set the default values
         $default_settings = array(
                              'footer-left'  => '[social_icons] <p class="copyright">Copyright &copy; ' . date('Y') . ' All Rights Reserved</p>',
-                             'footer-right' => '',
+                             'footer-right' => '<img class="dre-eho" src="' . CHILD_URL . '/images/dre-eho.png" alt="realty logos" />',
                              'disclaimer'   => '',
                             );
 

@@ -268,28 +268,16 @@ function picture_perfect_footer()
 {
     ?>
     <div class="one-half first footer-left">
-        <?php
-        echo
-        do_shortcode(genesis_get_option('footer-left', 'agentevo-footer-settings'));
-        ?>
+        <?php echo do_shortcode(genesis_get_option('footer-left', 'agentevo-footer-settings')); ?>
     </div>
     <div class="one-half footer-right">
+        <?php echo do_shortcode(genesis_get_option('footer-right', 'agentevo-footer-settings')); ?>
         <p class="credits">
-            Powered by the
+            Powered by
             <a href="http://themes.agentevolution.com/shop/<?php echo AE_CHILD_THEME_SLUG; ?>">
                 <?php echo AE_CHILD_THEME_NAME; ?>
             </a>
-            theme on the
-            <a href="http://agentevo.com/genesis">
-                Genesis Framework
-            </a>
         </p>
-        <?php
-        echo
-        do_shortcode(
-            wpautop(genesis_get_option('footer-right', 'agentevo-footer-settings'))
-        );
-        ?>
     </div>
     <?php
 
