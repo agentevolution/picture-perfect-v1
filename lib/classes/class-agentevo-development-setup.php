@@ -20,6 +20,7 @@ class Agentevo_Development_Setup
     {
         add_action('genesis_setup', array($this, 'dev_setup'));
         add_action('wp_footer', array($this, 'init_less_dev_mode'));
+        add_filter( 'show_admin_bar', '__return_false' );
     }
 
 
