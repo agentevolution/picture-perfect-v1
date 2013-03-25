@@ -73,6 +73,7 @@
     position: static;
     margin: 0 0 0 16px;
     padding-top: 0;
+    background: transparent;
   }
   .navbar.primary ul .sub-menu li {
     clear: left;

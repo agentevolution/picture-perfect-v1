@@ -1,0 +1,111 @@
+/* Featured Listings
+------------------------------------------------------------ */
+
+.listing-wrap {
+	float: left;
+	font-size: 12px;
+	margin: 20px 0;
+	position: relative;
+}
+
+.listing-wrap a {
+	width: auto;
+	padding: 4px;
+	background: #fff;
+	display: block;
+	border: 1px solid #999;
+	margin-bottom: 12px;
+}
+
+.listing-wrap a img {
+	margin-bottom: 0;
+	width: 100%;
+}
+
+.listing-price {
+	background: #111;
+	clear: both;
+	color: #fff;
+	font-size: 16px;
+	left: 5px;
+	padding: 10px;
+	position: absolute;
+	top: 5px;
+}
+
+.listing-text {
+	background: #fff;
+	clear: both;
+	font-size: 16px;
+	padding: 5px 10px;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+
+.listing-address,
+.listing-city-state-zip {
+	display: block;
+	font-size: 14px;
+	line-height: 14px;
+	margin: 0 0 5px;
+	padding: 0;
+	text-align: center;
+	font-family: 'Lato', arial, sans-serif;
+	text-transform: uppercase;
+}
+
+.listing-city-state-zip {
+	margin: 0 0 10px;
+}
+
+.listing-wrap .more-link {
+	margin: 0 auto;
+	display: block;
+	width: 140px;
+}
+
+.listing-wrap .more-link:hover {
+	text-decoration: none;
+}
+
+.property-search select {
+	margin-bottom: 15px;
+}
+
+.property-search #searchsubmit {
+	display: block;
+}
+
+.post-type-archive-listing .listing-wrap {
+	width: auto;
+	margin: 20px 0;
+}
+
+.sidebar .listing-wrap {
+	width: 100%;
+	margin: 0 0 45px;
+}
+
+
+/* Property Listings
+------------------------------------------------------------ */
+
+.property-details {
+	background-color: #fff;
+	overflow: hidden;
+	margin: 0 0 30px;
+	padding: 15px 20px 0;
+}
+
+.property-details-col1,
+.property-details-col2 {
+	float: left;
+	margin: 0;
+	padding: 0 0 15px;
+	width: 50%;
+}
+
+iframe {
+	margin: 0 0 30px;
+}
