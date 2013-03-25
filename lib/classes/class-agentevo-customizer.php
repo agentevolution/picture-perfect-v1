@@ -15,8 +15,8 @@ if (defined('ABSPATH') === false) {
 }
 
 add_action( 'customize_register'    , array( 'Agentevo_Theme_Options', 'register'            ) );
-// add_action( 'init'                  , array( 'Agentevo_Theme_Options', 'remove_all_mods'     ) );
-// add_action( 'init'                  , array( 'Agentevo_Theme_Options', 'remove_section_mods' ) );
+add_action( 'init'                  , array( 'Agentevo_Theme_Options', 'remove_all_mods'     ) );
+add_action( 'init'                  , array( 'Agentevo_Theme_Options', 'remove_section_mods' ) );
 add_action( 'wp_head'               , array( 'Agentevo_Theme_Options', 'render'              ) );
 /**
  * Contains methods for customizing the theme customization screen.
@@ -66,6 +66,26 @@ class Agentevo_Theme_Options
 			array(
 				'title'    => __('Background Colors', 'agentevo'),
 				'priority' => 37,
+			)
+		);
+
+
+		# Buttons
+		$wp_customize->add_section(
+			'buttons',
+			array(
+				'title'    => __('Buttons', 'agentevo'),
+				'priority' => 38,
+			)
+		);
+
+
+		# Options
+		$wp_customize->add_section(
+			'options',
+			array(
+				'title'    => __('Options', 'agentevo'),
+				'priority' => 39,
 			)
 		);
 
@@ -140,10 +160,7 @@ class Agentevo_Theme_Options
 		-----------------------------------------------*/
 
 		$wp_customize->add_setting(
-			'default_background_image',
-			array(
-				'default' => get_stylesheet_directory_uri() . '/images/PicturePerfect.jpg'
-			)
+			'default_background_image'
 		);
 
 
@@ -319,6 +336,162 @@ class Agentevo_Theme_Options
 				)
 			)
 		);
+
+
+		/* Buttons
+		-----------------------------------------------*/
+
+		$wp_customize->add_setting('primary_button_bg');
+		$wp_customize->add_setting('primary_button_border');
+		$wp_customize->add_setting('primary_button_textcolor');
+		$wp_customize->add_setting('primary_button_textshadow');
+
+		$wp_customize->add_setting('alt_button_bg');
+		$wp_customize->add_setting('alt_button_border');
+		$wp_customize->add_setting('alt_button_textcolor');
+		$wp_customize->add_setting('alt_button_textshadow');
+
+
+		# PRIMARY BUTTON BG
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'primary_button_bg',
+				array(
+					'label'    => __('Primary Button Background', 'agentevo'),
+					'section'  => 'buttons',
+					'priority' => 1
+				)
+			)
+		);
+
+
+		# PRIMARY BUTTON BORDER
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'primary_button_border',
+				array(
+					'label'    => __('Primary Button Border', 'agentevo'),
+					'section'  => 'buttons',
+					'priority' => 2
+				)
+			)
+		);
+
+
+		# PRIMARY BUTTON TEXTCOLOR
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'primary_button_textcolor',
+				array(
+					'label'    => __('Primary Button Text Color', 'agentevo'),
+					'section'  => 'buttons',
+					'priority' => 3
+				)
+			)
+		);
+
+
+		# PRIMARY BUTTON TEXTSHADOW
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'primary_button_textshadow',
+				array(
+					'label'    => __('Primary Button Text Shadow', 'agentevo'),
+					'section'  => 'buttons',
+					'priority' => 4
+				)
+			)
+		);
+
+
+		# ALT BUTTON BG
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'alt_button_bg',
+				array(
+					'label'    => __('Alt Button Background', 'agentevo'),
+					'section'  => 'buttons',
+					'priority' => 5
+				)
+			)
+		);
+
+
+		# ALT BUTTON BORDER
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'alt_button_border',
+				array(
+					'label'    => __('Alt Button Border', 'agentevo'),
+					'section'  => 'buttons',
+					'priority' => 6
+				)
+			)
+		);
+
+
+		# ALT BUTTON TEXT COLOR
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'alt_button_textcolor',
+				array(
+					'label'    => __('Alt Button Text Color', 'agentevo'),
+					'section'  => 'buttons',
+					'priority' => 7
+				)
+			)
+		);
+
+
+		# ALT BUTTON TEXT SHADOW
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				'alt_button_textshadow',
+				array(
+					'label'    => __('Alt Button Text Shadow', 'agentevo'),
+					'section'  => 'buttons',
+					'priority' => 8
+				)
+			)
+		);
+
+
+		/* Options
+		--------------------------------------------------*/
+
+		$wp_customize->add_setting('remove_all_mods');
+		$wp_customize->add_setting('remove_section_mods');
+
+		// Remove All Mods
+		$wp_customize->add_control( 'remove_all_mods', array(
+			'label'      => __( 'Remove All Customizations', 'agentevo' ),
+			'section'    => 'options',
+			'settings'   => 'remove_all_mods',
+			'type'       => 'checkbox'
+		) );
+
+		// Remove mods by section
+		$wp_customize->add_control( 'remove_section_mods', array(
+			'label'      => __( 'Remove Customizations By Section. Select one, press save, and refresh the page to see the changes.', 'agentevo' ),
+			'section'    => 'options',
+			'settings'   => 'remove_section_mods',
+			'type'       => 'radio',
+			'choices'    => array(
+				'title_tagline'     => 'Site Title & Tagline',
+				'general_settings'  => 'General Settings',
+				'text_colors'       => 'Text Colors',
+				'background_colors' => 'Background Colors',
+				'buttons'           => 'Buttons',
+			)
+		) );
 	}
 
 
@@ -430,7 +603,7 @@ class Agentevo_Theme_Options
 
 		# NAV/FOOTER BACKGROUND
 		self::generate_css(
-			'nav.primary, .site-footer',
+			'nav.primary, .site-footer, nav.primary ul',
 			'background',
 			'nav_footer_bg'
 		);
@@ -442,6 +615,7 @@ class Agentevo_Theme_Options
 			.sidebar .site-title-description-container,
 			#footer-widgets,
 			.home .home-right .menu li a,
+			.sidebar .menu li.has-icon a,
 			.clear-line',
 			'border-color',
 			'border_color'
@@ -456,6 +630,88 @@ class Agentevo_Theme_Options
 			'url(',
 			') no-repeat center top; background-size: contain'
 		);
+
+
+		$primary_button_classes = '
+		div.gform_footer input.button, div.gform_footer input.button:hover,
+		.listing-wrap .more-link, .listing-wrap .more-link:hover,
+		input[type="submit"], input[type="submit"]:hover,
+		input[type="button"],
+		.enews #subbutton,
+		.reply a, .reply a:visited, .reply a:hover,
+		.searchsubmit, .searchsubmit:hover,
+		#submit, #submit:hover,
+		.btn-primary, .btn-primary:visited, .btn-primary:hover';
+
+		# PRIMARY BUTTON BG
+		self::generate_css(
+			$primary_button_classes,
+			'background',
+			'primary_button_bg'
+		);
+
+
+		# PRIMARY BUTTON BORDER
+		self::generate_css(
+			$primary_button_classes,
+			'border-color',
+			'primary_button_border'
+		);
+
+
+		# PRIMARY BUTTON TEXT COLOR
+		self::generate_css(
+			$primary_button_classes,
+			'color',
+			'primary_button_textcolor'
+		);
+
+
+		# PRIMARY BUTTON TEXT SHADOW
+		self::generate_css(
+			$primary_button_classes,
+			'text-shadow',
+			'primary_button_textshadow',
+			'1px 1px '
+		);
+
+
+		$alt_button_classes = 'input.btn-alt, .btn-alt, .btn-alt:visited, .btn-alt:hover';
+
+		# ALT BUTTON BG
+		self::generate_css(
+			$alt_button_classes,
+			'background',
+			'alt_button_bg'
+		);
+
+
+		# ALT BUTTON BORDER
+		self::generate_css(
+			$alt_button_classes,
+			'border-color',
+			'alt_button_border'
+		);
+
+
+		# ALT BUTTON TEXT COLOR
+		self::generate_css(
+			$alt_button_classes,
+			'color',
+			'alt_button_textcolor',
+			'',
+			' !important'
+		);
+
+
+		# ALT BUTTON TEXT SHADOW
+		self::generate_css(
+			$alt_button_classes,
+			'text-shadow',
+			'alt_button_textshadow',
+			'1px 1px '
+		);
+
 
 		echo '</style>';
 	}
@@ -502,33 +758,51 @@ class Agentevo_Theme_Options
 
 
 	/**
-	 * Returns the mod ids of a section
+	 * Returns an array of mod sections and mods ids
 	 *
-	 * @param string $section the section id
-	 *
-	 * @return array mod ids of $section
+	 * @return array
 	 */
-	public static function get_section_mods($section)
+	public static function get_sections_with_mods()
 	{
-		switch($section) {
+		return array(
 
-			case 'title_tagline':
-				$output = array(
-					'',
-				);
-				break;
+			'title_tagline' => array(
+				'logo_image',
+				'logo_display_type',
+				'site_title_desc_color',
+			),
 
-			case 'general_settings':
-				$output = array(
-					'',
-				);
-				break;
+			'general_settings' => array(
+				'default_background_image',
+			),
 
-			default:
-				$output = false;
-		}
+			'text_colors' => array(
+				'text_color',
+				'link_color',
+				'link_hover_color',
+				'nav_link_color',
+				'nav_link_hover_color',
+				'footer_text_color',
+				'icon_color',
+			),
 
-		return $output;
+			'background_colors' => array(
+				'content_bg',
+				'nav_footer_bg',
+				'border_color',
+			),
+
+			'buttons' => array(
+				'primary_button_bg',
+				'primary_button_border',
+				'primary_button_textcolor',
+				'primary_button_textshadow',
+				'alt_button_bg',
+				'alt_button_border',
+				'alt_button_textcolor',
+				'alt_button_textshadow',
+			),
+		);
 	}
 
 
@@ -539,8 +813,14 @@ class Agentevo_Theme_Options
 	 */
 	public static function get_mods()
 	{
-		return array(
-			'default_background_image',
+		$mod_sections = self::get_sections_with_mods();
+
+		return array_merge(
+			$mod_sections['title_tagline'],
+			$mod_sections['general_settings'],
+			$mod_sections['text_colors'],
+			$mod_sections['background_colors'],
+			$mod_sections['buttons']
 		);
 	}
 
@@ -558,7 +838,9 @@ class Agentevo_Theme_Options
 			return;
 		}
 
-		$mods = self::get_section_mods($section);
+		$mod_sections = self::get_sections_with_mods();
+
+		$mods = $mod_sections[$section];
 
 		if (false === is_array($mods)) {
 			return;
@@ -569,6 +851,22 @@ class Agentevo_Theme_Options
 		}
 
 		remove_theme_mod('remove_section_mods');
+	}
+
+
+	public static function remove_all_mods()
+	{
+		if ( 1 != get_theme_mod('remove_all_mods') ) {
+			return;
+		}
+
+		$mods = self::get_mods();
+
+		foreach($mods as $mod) {
+			remove_theme_mod($mod);
+		}
+
+		remove_theme_mod('remove_all_mods');
 	}
 
 

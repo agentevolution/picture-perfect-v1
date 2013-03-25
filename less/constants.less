@@ -265,7 +265,6 @@ img {
 }
 
 .author-box .avatar {
-	background-color: #fff;
 	float: left;
 	margin: 0 10px 0 0;
 }
@@ -275,10 +274,8 @@ img {
 }
 
 .comment-list li .avatar {
-	background-color: #fff;
 	float: right;
 	margin: 0 5px 0 10px;
-	padding: 4px;
 }
 
 img.centered,
@@ -846,60 +843,60 @@ input[type="button"],
 
 /* Comments
 ------------------------------------------------------------ */
-
 #comments,
 #respond {
-	margin: 0 0 15px;
+	line-height: 1.5;
 	overflow: hidden;
 }
 
-#respond {
-	padding-top: 20px;
+#comments {
+	margin-bottom: 48px;
+	margin-bottom: 3rem;
 }
 
 #author,
-#comment,
 #email,
 #url {
-	margin: 10px 5px 0 0;
-	padding: 5px;
-	width: 250px;
+	margin-bottom: 16px;
+	margin-bottom: 1rem;
+	width: 50%;
+}
+
+#url {
+	margin-bottom: 0;
 }
 
 #comment {
-	height: 150px;
-	margin: 10px 0;
-	width: 96%;
+	margin: 16px 0;
+	margin: 1rem 0;
+}
+
+label {
+	margin-left: 12px;
+	margin-left: 0.75rem;
 }
 
 .ping-list {
-	margin: 0 0 40px;
-}
-
-.comment-list ol,
-.ping-list ol {
-	padding: 10px;
+	margin-bottom: 48px;
+	margin-bottom: 4rem;
 }
 
 .comment-list li,
 .ping-list li {
-	font-weight: bold;
 	list-style-type: none;
-	margin: 15px 0 5px;
-	padding: 10px 5px 10px 10px;
+	margin: 24px 0 0;
+	margin: 1.5rem 0 0;
+	padding: 32px;
+	padding: 2rem;
 }
 
 .comment-list li ul li {
-	background: #eaeaea;
-	list-style-type: none;
-	margin-left: 10px;
-	margin-right: -6px;
+	margin-right: -32px;
+	margin-right: -2rem;
 }
 
-.comment-content p {
-	font-size: 0.875em;
-	line-height: 1.5em;
-	padding: 0 0 20px;
+.comment-header {
+	overflow: hidden;
 }
 
 .comment-list cite,
@@ -908,36 +905,15 @@ input[type="button"],
 }
 
 .commentmetadata {
-	font-size: 0.75em;
-	margin: 5px 0;
+	margin-bottom: 12px;
+	margin-bottom: 0.75rem;
 }
 
-.reply {
-	font-size: 0.875em;
-	font-weight: 300;
-	line-height: 1.5em;
-}
-
-.nocomments {
-	text-align: center;
+.comment-content p {
+	margin-bottom: 24px;
+	margin-bottom: 1.5rem;
 }
 
 #comments .navigation {
 	display: block;
-}
-
-.bypostauthor {}
-
-.thread-alt,
-.thread-even {
-	background-color: #f7f7f7;
-}
-
-.alt,
-.depth-1,
-.even {
-    border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border: 1px solid #000;
 }
