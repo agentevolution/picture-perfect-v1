@@ -242,7 +242,9 @@ function picture_perfect_load_ie8_css()
     ?>
     <!--[if lt IE 9]>
         <style>
-
+        body .site-title {
+            background: url(<?php echo CHILD_URL; ?>/images/logo-standard.png) no-repeat;            
+        }
         </style>
     <![endif]-->
     <?php
