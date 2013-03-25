@@ -1,0 +1,93 @@
+/*!
+ * Bootstrap v2.3.1
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+.navbar {
+  overflow: visible;
+  *position: relative;
+  *z-index: 2;
+}
+.navbar-inner:before,
+.navbar-inner:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.navbar-inner:after {
+  clear: both;
+}
+.nav-collapse.collapse {
+  height: auto;
+  overflow: visible;
+}
+.navbar .btn-navbar {
+  display: none;
+  float: right;
+  padding: 7px 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: #888;
+}
+.navbar .btn-navbar .icon-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background-color: #222;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+.btn-navbar .icon-bar + .icon-bar {
+  margin-top: 3px;
+}
+@media (max-width: 979px) {
+  .nav-collapse {
+    clear: both;
+  }
+  .nav-collapse,
+  .nav-collapse.collapse {
+    overflow: hidden;
+    height: 0;
+  }
+  .navbar .btn-navbar {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  .navbar.primary li li a:after {
+    display: none;
+  }
+  .navbar.primary ul li {
+    clear: left;
+  }
+  .navbar.primary ul .sub-menu {
+    left: auto;
+    position: static;
+    margin: 0 0 0 16px;
+    padding-top: 0;
+  }
+  .navbar.primary ul .sub-menu li {
+    clear: left;
+  }
+  .navbar.primary ul .sub-menu li a {
+    font-size: 18px;
+  }
+  .navbar.primary .search {
+    float: left;
+    clear: left;
+  }
+}
+@media (min-width: 980px) {
+  .nav-collapse.collapse {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
