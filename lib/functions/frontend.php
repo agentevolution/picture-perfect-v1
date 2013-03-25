@@ -39,6 +39,12 @@ function picture_perfect_frontend_setup()
     remove_action('genesis_after_header', 'genesis_do_nav');
     add_action('genesis_before_header', 'genesis_do_nav');
 
+    # Unregister superfish (nav dropdown animations)
+    add_action('wp_enqueue_scripts', 'unregister_superfish');
+
+    # Filter the nav output to make it collapse on small screen sizes
+    add_filter('genesis_do_nav', 'picture_perfect_do_nav', 10, 2);
+
     # Remove secondary navigation
     remove_theme_support('genesis-menus');
     add_theme_support(
@@ -137,6 +143,8 @@ function picture_perfect_frontend_setup()
 
     # Outputs the backstretch js
     add_action('wp_footer', 'picture_perfect_backstretch_js', 9999);
+
+    add_filter( 'show_admin_bar', '__return_false' );
 }
 
 
@@ -158,6 +166,38 @@ function picture_perfect_site_title_description_markup()
     $markup .= "\n" . '<p class="site-description">' . get_bloginfo('description') . '</p>';
     $markup .= "\n" . '</div>';
     echo $markup;
+}
+
+
+/**
+ * Unregisters superfish scripts
+ *
+ * @return void
+ */
+function unregister_superfish() {
+    wp_deregister_script( 'superfish' );
+    wp_deregister_script( 'superfish-args' );
+}
+
+
+/**
+ * Adds markup to make the nav collapse at small screen sizes
+ *
+ * @return string modified nav output
+ */
+function picture_perfect_do_nav($nav_output, $nav)
+{
+    return '
+    <nav class="primary navbar">
+        <div class="navbar-inner wrap">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <div class="nav-collapse collapse">' . $nav . '</div>
+        </div>
+    </nav>';
 }
 
 
@@ -248,7 +288,7 @@ function picture_perfect_add_google_fonts()
 
 
 /**
- * Enqueues theme.js
+ * Enqueues javascripts and collapse.css
  *
  * @return void
  */
@@ -256,6 +296,8 @@ function picture_perfect_javascripts()
 {
     wp_enqueue_script('backstretch', CHILD_URL . '/js/jquery.backstretch.min.js', array('jquery'), false, true);
     wp_enqueue_script('picture_perfect', CHILD_URL . '/js/theme.js', array('jquery'), false, true);
+    wp_enqueue_script('collapse', CHILD_URL . '/js/collapse.min.js', array('jquery'), false, true);
+    wp_enqueue_style('collapse', CHILD_URL . '/css/collapse.css');
 }
 
 
