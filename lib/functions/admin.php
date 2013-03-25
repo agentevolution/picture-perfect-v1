@@ -36,6 +36,7 @@ function picture_perfect_admin_setup()
     # Image Sizes
     add_image_size('blog_featured', 715, 240, true);
     add_image_size('sidebar_featured', 352, 125, true);
+    add_image_size('properties', 560, 400, true);
 
     # Unregister unused sidebar
     unregister_sidebar('sidebar-alt');

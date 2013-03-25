@@ -63,8 +63,11 @@ function picture_perfect_frontend_setup()
     # Add google fonts link to head
     add_action('genesis_meta', 'picture_perfect_add_google_fonts', 5);
 
-    # Enqueue theme.js
+    # Enqueue javascripts
     add_action('wp_enqueue_scripts', 'picture_perfect_javascripts');
+
+    # Enqueue stylesheets
+    add_action('wp_enqueue_scripts', 'picture_perfect_stylesheets');
 
     # Enable shortcode in widgets
     add_filter('widget_text', 'do_shortcode');
@@ -143,8 +146,6 @@ function picture_perfect_frontend_setup()
 
     # Outputs the backstretch js
     add_action('wp_footer', 'picture_perfect_backstretch_js', 9999);
-
-    add_filter( 'show_admin_bar', '__return_false' );
 }
 
 
@@ -296,8 +297,23 @@ function picture_perfect_javascripts()
 {
     wp_enqueue_script('backstretch', CHILD_URL . '/js/jquery.backstretch.min.js', array('jquery'), false, true);
     wp_enqueue_script('picture_perfect', CHILD_URL . '/js/theme.js', array('jquery'), false, true);
-    wp_enqueue_script('collapse', CHILD_URL . '/js/collapse.min.js', array('jquery'), false, true);
+    wp_enqueue_script('collapse', CHILD_URL . '/js/collapse.min.js', array('jquery'), false, true);    
+}
+
+
+/**
+ * Enqueues stylesheets
+ *
+ * @return void
+ */
+function picture_perfect_stylesheets()
+{
     wp_enqueue_style('collapse', CHILD_URL . '/css/collapse.css');
+
+    # Load agentpress-listings.css if if agentpress listings is installed
+    if (is_dir(WP_PLUGIN_DIR . '/agentpress-listings')) {
+        wp_enqueue_style('agentpress', CHILD_URL . '/css/agentpress-listings.css');
+    }
 }
 
 
@@ -497,7 +513,7 @@ function picture_perfect_backstretch_js()
     }
 
     if (empty($thumb_url)) {
-        $thumb_url = CHILD_URL . '/images/PicturePerfect.jpg';
+        return;
     }
 
     ?>
