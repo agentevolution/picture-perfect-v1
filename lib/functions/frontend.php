@@ -332,12 +332,7 @@ function picture_perfect_footer()
     </div>
     <div class="one-half footer-right">
         <?php echo do_shortcode(genesis_get_option('footer-right', 'agentevo-footer-settings')); ?>
-        <p class="credits">
-            Powered by
-            <a href="http://themes.agentevolution.com/shop/<?php echo AE_CHILD_THEME_SLUG; ?>">
-                <?php echo AE_CHILD_THEME_NAME; ?>
-            </a>
-        </p>
+        <?php echo agentevo_footer_copy(); ?>
     </div>
     <?php
 
@@ -521,4 +516,35 @@ function picture_perfect_backstretch_js()
     ?>
     <script>jQuery.backstretch("<?php echo $thumb_url; ?>");</script>
     <?php
+}
+
+
+/**
+ * Returns a random line of text
+ *
+ * @return string
+ */
+function agentevo_footer_copy() {
+
+    $footer_copy = array(
+        'WordPress Real Estate Themes',
+        'WordPress Themes for Real Estate Agents',
+        'Real Estate WordPress Themes',
+        'WordPress Themes with IDX',
+        'Real Estate Themes for WordPress',
+    );
+
+    $key = array_rand($footer_copy);
+
+    $output = '<p class="credits">';
+
+    if ( is_home() || is_front_page() ) {
+        $output .= '<a href="http://themes.agentevolution.com">' . $footer_copy[$key] . '</a>';
+    } else {
+        $output .= '<a href="http://themes.agentevolution.com/shop/picture-perfect">Picture Perfect Theme</a>';
+    }
+
+    $output .= '</p>';
+
+    return $output;
 }
