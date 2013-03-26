@@ -73,6 +73,9 @@ function picture_perfect_admin_setup()
 
     # Footer settings admin page
     add_action('genesis_admin_menu', 'picture_perfect_add_footer_settings');
+
+    # Icon class menu page metabox
+    add_action('admin_init', 'picture_perfect_icon_class_menu_page_metabox');
 }
 
 
@@ -164,4 +167,44 @@ function picture_perfect_add_footer_settings()
 {
     global $_agentevo_footer_settings;
     $_agentevo_footer_settings = new Agentevo_Footer_Settings;
+}
+
+
+/**
+ * Adds a metabox to the menu administration page
+ *
+ * @return void
+ */
+function picture_perfect_icon_class_menu_page_metabox()
+{
+    add_meta_box( 'icon-class-menu', __('Icon Classes'), 'picture_perfect_icon_class_menu_page_metabox_content', 'nav-menus', 'side', 'default' );
+}
+
+
+/**
+ * Shows a list of available icon css classes
+ */
+function picture_perfect_icon_class_menu_page_metabox_content()
+{
+    ?>
+    <p>
+        To display an icon graphic next to a nav menu item,
+        add one of the following classes to the menu item's
+        "CSS Classes" field.
+    </p>
+    <p>
+        If you do not see the "CSS Classes" field, then you need
+        to enable them by toggling the screen options tab on the top right
+        corner of the screen and checking the "CSS Classes" box.
+    </p>
+    <h4>Icon Classes</h4>
+    <ul>
+        <li>icon-search</li>
+        <li>icon-home</li>
+        <li>icon-pencil</li>
+        <li>icon-envelope</li>
+    </ul>
+    <a href="http://fortawesome.github.com/Font-Awesome/" target="_blank">See all icon classes</a>
+    <br /><br />
+    <?php
 }
