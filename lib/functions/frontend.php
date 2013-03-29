@@ -320,34 +320,6 @@ function picture_perfect_stylesheets()
 
 
 /**
- * Outputs the footer markup
- *
- * @return void
- */
-function picture_perfect_footer()
-{
-    ?>
-    <div class="one-half first footer-left">
-        <?php echo do_shortcode(genesis_get_option('footer-left', 'agentevo-footer-settings')); ?>
-    </div>
-    <div class="one-half footer-right">
-        <?php echo do_shortcode(genesis_get_option('footer-right', 'agentevo-footer-settings')); ?>
-        <?php echo agentevo_footer_copy(); ?>
-    </div>
-    <?php
-
-    $disclaimer = genesis_get_option('disclaimer', 'agentevo-footer-settings');
-
-    if (false === empty($disclaimer)) {
-        echo '
-        <div class="footer-disclaimer">',
-            do_shortcode(wpautop($disclaimer)),
-        '</div>';
-    }
-}
-
-
-/**
  * Adds agentevo nav walker to wp_nav_menu output
  *
  * The Agentevo_Nav_Walker enables descriptions in menu items

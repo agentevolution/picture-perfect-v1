@@ -23,6 +23,35 @@ require_once 'lib/classes/class-agentevo-nav-walker.php';
 require_once 'lib/functions/admin.php';
 require_once 'lib/functions/frontend.php';
 
+
+/**
+ * Outputs the footer markup
+ *
+ * @return void
+ */
+function picture_perfect_footer()
+{
+    ?>
+    <div class="one-half first footer-left">
+        <?php echo do_shortcode(genesis_get_option('footer-left', 'agentevo-footer-settings')); ?>
+    </div>
+    <div class="one-half footer-right">
+        <?php echo do_shortcode(genesis_get_option('footer-right', 'agentevo-footer-settings')); ?>
+        <?php echo agentevo_footer_copy(); ?>
+    </div>
+    <?php
+
+    $disclaimer = genesis_get_option('disclaimer', 'agentevo-footer-settings');
+
+    if (false === empty($disclaimer)) {
+        echo '
+        <div class="footer-disclaimer">',
+            do_shortcode(wpautop($disclaimer)),
+        '</div>';
+    }
+}
+
+
 # Include functions that should run in development only
 # Else serve css/style.css
 if ( isset($_SERVER['SERVER_NAME']) && 'localhost' == $_SERVER['SERVER_NAME'] ) {
