@@ -31,7 +31,7 @@ function picture_perfect_admin_setup()
 {
     require CHILD_DIR . '/lib/classes/class-agentevo-footer-settings.php';
     require CHILD_DIR . '/lib/classes/class-agentevo-genesis-settings.php';
-    require 'shortcodes.php';
+    require CHILD_DIR . '/lib/functions/shortcodes.php';
 
     # Image Sizes
     add_image_size('blog_featured', 715, 240, true);
