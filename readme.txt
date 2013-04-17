@@ -14,5 +14,7 @@ Please visit <a href="http://themes.agentevolution.com/guide/picture-perfect-the
 Please visit <a href="http://themes.agentevolution.com/forums/section/theme-support/picture-perfect/">http://themes.agentevolution.com/forums/section/theme-support/picture-perfect/</a> for theme support.
 
 <strong>CHANGELOG</strong>
+1.4.2 - dsIDXpress conflict - Use CHILD_DIR for the path to shortcodes.php
+1.4.1 - Include Footer markup in functions.php so it is easily removed via the WP Editor
 1.4 - Bump in version number to prevent update conflict
 1.0 - Initial release
