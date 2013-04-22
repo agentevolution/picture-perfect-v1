@@ -54,11 +54,11 @@ function picture_perfect_footer()
 
 # Include functions that should run in development only
 # Else serve css/style.css
-if ( isset($_SERVER['SERVER_NAME']) && 'localhost' == $_SERVER['SERVER_NAME'] ) {
-	require_once 'lib/classes/class-agentevo-development-setup.php';
-} else {
-	add_filter('stylesheet_uri', 'picture_perfect_stylesheet_uri', 10, 2);
-}
+// if ( isset($_SERVER['SERVER_NAME']) && 'localhost' == $_SERVER['SERVER_NAME'] ) {
+// 	require_once 'lib/classes/class-agentevo-development-setup.php';
+// } else {
+// 	add_filter('stylesheet_uri', 'picture_perfect_stylesheet_uri', 10, 2);
+// }
 
 
 /**
@@ -68,7 +68,7 @@ if ( isset($_SERVER['SERVER_NAME']) && 'localhost' == $_SERVER['SERVER_NAME'] ) 
  */
 function picture_perfect_stylesheet_uri($stylesheet_uri, $stylesheet_dir_uri)
 {
-	return $stylesheet_dir_uri . '/css/style.css';
+	return $stylesheet_dir_uri . '/style.css';
 }
 
 
