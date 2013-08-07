@@ -4,7 +4,7 @@ Theme URI: http://themes.agentevolution.com/shop/picture-perfect
 Description: Genesis child theme by Agent Evolution
 Author: AgentEvolution
 Author URI: http://themes.agentevolution.com
-Version: 1.4.5
+Version: 1.5
 Tags: real estate, html5, css3, responsive, one-column, two-columns, left-sidebar, right-sidebar, flexible-width, custom-background, custom-colors, custom-header, theme-options, full-width-template
 Template: genesis
 Template Version: 1.9.1
@@ -282,7 +282,7 @@ select,input,textarea {
     clear: both;
 }
 
-#wrap {
+.site-container {
     background-color: transparent;
 }
 
@@ -299,7 +299,7 @@ select,input,textarea {
 @media (max-width:9000px) {
     select,input,iframe,img {
         max-width: 100%;
-    };
+    }
 }
 
 p {
@@ -323,7 +323,7 @@ a i,a:hover i {
 
 /* =Structure
 ------------------------------------------------------------ */
-#inner {
+.site-inner {
     padding: 0;
     margin: 50px auto 33px;
     *zoom: 1;
@@ -332,42 +332,42 @@ a i,a:hover i {
     width: 1140px;
 }
 
-#inner:before,#inner:after {
+.site-inner:before,.site-inner:after {
     display: table;
     content: "";
     line-height: 0;
 }
 
-#inner:after {
+.site-inner:after {
     clear: both;
 }
 
-#content-sidebar-wrap {
+.content-sidebar-wrap {
     *zoom: 1;
     padding: 20px;
 }
 
-#content-sidebar-wrap:before,#content-sidebar-wrap:after {
+.content-sidebar-wrap:before,.content-sidebar-wrap:after {
     display: table;
     content: "";
     line-height: 0;
 }
 
-#content-sidebar-wrap:after {
+.content-sidebar-wrap:after {
     clear: both;
 }
 
-#content {
+.content {
     float: left;
     width: 65%;
     padding-bottom: 15px;
 }
 
-.full-width-content #content {
+.full-width-content .content {
     width: 100%;
 }
 
-.sidebar-content #content {
+.sidebar-content .content {
     float: right;
 }
 
@@ -417,15 +417,15 @@ p.site-description {
     text-decoration: none;
 }
 
-#content-sidebar-wrap>.site-title-description-container {
+.content-sidebar-wrap>.site-title-description-container {
     display: none;
 }
 
-.full-width-content #content-sidebar-wrap>.site-title-description-container {
+.full-width-content .content-sidebar-wrap>.site-title-description-container {
     display: block;
 }
 
-.custom-home-page #content-sidebar-wrap>.site-title-description-container {
+.custom-home-page .content-sidebar-wrap>.site-title-description-container {
     display: none;
 }
 
@@ -635,12 +635,12 @@ ul.genesis-nav-menu li:hover>ul,ul.genesis-nav-menu li.sfHover ul,.site-header .
 /* =Homepage
 ------------------------------------------------------------ */
 
-.home #inner {
+.home .site-inner {
     background: transparent;
     margin: 0 auto;
 }
 
-.home #content-sidebar-wrap {
+.home .content-sidebar-wrap {
     padding: 0;
 }
 
@@ -674,13 +674,13 @@ ul.genesis-nav-menu li:hover>ul,ul.genesis-nav-menu li.sfHover ul,.site-header .
     padding-left: 26px;
 }
 
-.blog-home-page #inner {
+.blog-home-page .site-inner {
     background: #fff;
     background: rgba(255, 255, 255, 0.9);
     margin: 50px auto 33px;
 }
 
-.blog-home-page #content-sidebar-wrap {
+.blog-home-page .content-sidebar-wrap {
     padding: 20px;
 }
 
@@ -900,7 +900,7 @@ blockquote {
     line-height: 150%;
 }
 
-#content blockquote {
+.content blockquote {
     margin: 5px 15px 20px;
 }
 
@@ -1028,12 +1028,12 @@ label {
     line-height: 150%;
 }
 
-#sidebar-alt {
+.sidebar-alt {
     float: left;
     width: 15.625%;
 }
 
-.sidebar-content #sidebar {
+.sidebar-content .sidebar {
     float: left;
 }
 
@@ -1394,35 +1394,35 @@ div.gform_footer input.button:hover,input[type="submit"]:hover,.enews #subbutton
 
 /* =Footer widgets
 ------------------------------------------------------------ */
-#footer-widgets {
+.footer-widgets {
     overflow: hidden;
     width: 100%;
     padding-top: 22px;
     border-top: 4px solid #000;
 }
 
-#footer-widgets .widget {
+.footer-widgets .widget {
     background: transparent;
     border: 0;
     padding: 0;
 }
 
-#footer-widgets .textwidget {
+.footer-widgets .textwidget {
     padding: 0;
 }
 
-#footer-widgets .widget-area {
+.footer-widgets .widget-area {
     float: left;
     padding-left: 3%;
     width: 31.33%;
 }
 
-#footer-widgets .widgettitle {
+.footer-widgets .widgettitle {
     font-size: 24px;
     font-weight: bold;
 }
 
-#footer-widgets .footer-widgets-1 {
+.footer-widgets .footer-widgets-1 {
     padding-left: 0;
 }
 
@@ -1482,19 +1482,19 @@ div.gform_footer input.button:hover,input[type="submit"]:hover,.enews #subbutton
 ------------------------------------------------------------ */
 
 @media only screen and (min-width:1200px) {
-    .wrap,#inner {
+    .wrap,.site-inner {
         width: 1140px;
-    };
+    }
 }
 
 @media only screen and (min-width:979px) and (max-width:1200px) {
-    .wrap,#inner {
+    .wrap,.site-inner {
         width: 960px;
-    };
+    }
 }
 
 @media only screen and (min-width:768px) and (max-width:979px) {
-    .wrap,#inner {
+    .wrap,.site-inner {
         width: 724px;
     }
 
@@ -1556,7 +1556,7 @@ div.gform_footer input.button:hover,input[type="submit"]:hover,.enews #subbutton
 
     .sidebar .menu li.has-icon a span {
         padding-top: 8px;
-    };
+    }
 }
 
 @media only screen and (max-width:767px) {
@@ -1565,24 +1565,24 @@ div.gform_footer input.button:hover,input[type="submit"]:hover,.enews #subbutton
         margin: 0 auto;
     }
 
-    .archive-page,.content-sidebar #content,.sidebar-content #content,.full-width-content #content,#footer-widgets .widget-area,.sidebar,#wrap {
+    .archive-page,.content-sidebar .content,.sidebar-content .content,.full-width-content .content,.footer-widgets .widget-area,.sidebar,.site-container {
         width: 100%;
     }
 
-    .wrap,#inner {
+    .wrap,.site-inner {
         width: 96%;
     }
 
-    #description,.footer-left,.footer-right {
+    .site-description,.footer-left,.footer-right {
         float: none;
         text-align: center;
     }
 
-    #content-sidebar-wrap>.site-title-description-container {
+    .content-sidebar-wrap>.site-title-description-container {
         display: block;
     }
 
-    #sidebar .site-title-description-container {
+    .sidebar .site-title-description-container {
         display: none;
     }
 
@@ -1599,7 +1599,7 @@ div.gform_footer input.button:hover,input[type="submit"]:hover,.enews #subbutton
         margin: 4px 0 5px 6px;
     }
 
-    #content {
+    .content {
         padding-bottom: 30px;
     }
 
@@ -1625,7 +1625,7 @@ div.gform_footer input.button:hover,input[type="submit"]:hover,.enews #subbutton
         width: 100%;
     }
 
-    #footer-widgets .widget-area {
+    .footer-widgets .widget-area {
         padding-left: 0;
     }
 
@@ -1640,7 +1640,7 @@ div.gform_footer input.button:hover,input[type="submit"]:hover,.enews #subbutton
 
     .site-footer .footer-right .credits {
         float: none;
-    };
+    }
 }
 
 @media only screen and (max-width:480px) {
@@ -1664,7 +1664,7 @@ div.gform_footer input.button:hover,input[type="submit"]:hover,.enews #subbutton
         margin: 10px auto;
         width: 90%;
         margin-left: 5%;
-    };
+    }
 }
 
 /* =Icon font (Font Awesome More - http://gregoryloucas.github.io/Font-Awesome-More/)
@@ -1852,7 +1852,7 @@ ul.icons li [class^="icon-"],ul.icons li [class*=" icon-"] {
 
     100% {
         -moz-transform: rotate(359deg);
-    };
+    }
 }
 
 @-webkit-keyframes spin {
@@ -1862,7 +1862,7 @@ ul.icons li [class^="icon-"],ul.icons li [class*=" icon-"] {
 
     100% {
         -webkit-transform: rotate(359deg);
-    };
+    }
 }
 
 @-o-keyframes spin {
@@ -1872,7 +1872,7 @@ ul.icons li [class^="icon-"],ul.icons li [class*=" icon-"] {
 
     100% {
         -o-transform: rotate(359deg);
-    };
+    }
 }
 
 @-ms-keyframes spin {
@@ -1882,7 +1882,7 @@ ul.icons li [class^="icon-"],ul.icons li [class*=" icon-"] {
 
     100% {
         -ms-transform: rotate(359deg);
-    };
+    }
 }
 
 @keyframes spin {
@@ -1892,7 +1892,7 @@ ul.icons li [class^="icon-"],ul.icons li [class*=" icon-"] {
 
     100% {
         transform: rotate(359deg);
-    };
+    }
 }
 
 @-moz-document url-prefix() {
@@ -1910,7 +1910,7 @@ ul.icons li [class^="icon-"],ul.icons li [class*=" icon-"] {
 
     .btn .icon-spin.icon-large {
         height: .75em;
-    };
+    }
 }
 
 .icon-glass:before {
@@ -3134,8 +3134,6 @@ ul.icons li [class^="icon-"],ul.icons li [class*=" icon-"] {
 
     img {
         max-width: 100% !important;
-    } @    page {
-        margin: 0.5cm;
     }
 
     p,h2,h3 {
@@ -3145,5 +3143,5 @@ ul.icons li [class^="icon-"],ul.icons li [class*=" icon-"] {
 
     h2,h3 {
         page-break-after: avoid;
-    };
+    }
 }

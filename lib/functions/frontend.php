@@ -30,7 +30,7 @@ add_action('genesis_setup', 'picture_perfect_frontend_setup', 15);
 function picture_perfect_frontend_setup()
 {
     # Enable html5 doctype and elements
-    add_theme_support('genesis-html5');
+    add_theme_support('html5');
 
     # Add the html5 shim to the document head
     add_action('wp_head', 'picture_perfect_add_ie_html5_shim');
