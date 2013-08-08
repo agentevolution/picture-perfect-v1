@@ -516,22 +516,22 @@ ul.genesis-nav-menu li:hover>ul,ul.genesis-nav-menu li.sfHover ul,.site-header .
     left: 0;
 }
 
-.navigation {
+.pagination {
     overflow: hidden;
     padding: 20px 0;
     width: 100%;
 }
 
-.navigation li {
+.pagination li {
     display: inline;
 }
 
-.navigation li a,.navigation li.disabled,.navigation li a:hover,.navigation li.active a {
+.pagination li a,.pagination li.disabled,.pagination li a:hover,.pagination li.active a {
     border: 1px solid #111111;
     padding: 5px 8px;
 }
 
-.navigation li a:hover,.navigation li.active a {
+.pagination li a:hover,.pagination li.active a {
     background-color: transparent;
 }
 
@@ -859,19 +859,19 @@ h5,.h5 {
     width: 45%;
 }
 
-.categories,.post-comments,.post-info .author,.time,.tags {
+.entry-meta-categories,.entry-meta-comments,.entry-header .entry-meta .author,.time,.entry-meta-tags {
     margin: 0 0 0 10px;
 }
 
-.post-info {
+.entry-header .entry-meta {
     margin: 10px 0;
 }
 
-.post-info .time,.post-meta .categories {
+.entry-header .entry-meta .time,.entry-footer .entry-meta .entry-meta-categories {
     margin-left: 0;
 }
 
-.post-meta {
+.entry-footer .entry-meta {
     border-top: 3px solid #111111;
     clear: both;
     font-size: 12px;
@@ -943,12 +943,12 @@ p.subscribe-to-comments {
 
 /* =Comments
 ------------------------------------------------------------ */
-#comments,#respond {
+.entry-comments,#respond {
     line-height: 1.5;
     overflow: hidden;
 }
 
-#comments {
+.entry-comments {
     margin-bottom: 48px;
     margin-bottom: 3rem;
 }
@@ -1009,7 +1009,7 @@ label {
     margin-bottom: 1.5rem;
 }
 
-#comments .navigation {
+.entry-comments .navigation {
     display: block;
 }
 
