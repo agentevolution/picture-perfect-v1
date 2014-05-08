@@ -14,9 +14,25 @@ Please visit <a href="http://www.agentevolution.com/guide/picture-perfect-theme-
 Please visit <a href="http://www.agentevolution.com/forums/section/theme-support/picture-perfect/">http://www.agentevolution.com/forums/section/theme-support/picture-perfect/</a> for theme support.
 
 <strong>CHANGELOG</strong>
-1.4.4 - Fix file paths in stylesheet
-1.4.3 - Change main stylesheet path, prettify, and include comments
-1.4.2 - dsIDXpress conflict - Use CHILD_DIR for the path to shortcodes.php
-1.4.1 - Include Footer markup in functions.php so it is easily removed via the WP Editor
-1.4 - Bump in version number to prevent update conflict
-1.0 - Initial release
+
+** 1.5.1 **
+Rename AgentPress template files so WP Listings templates take precedence
+* If you wat to continue using AgentPress, rename the files archive-listing-agentpress.php, single-listing-agentpress.php, and taxonomy-agentpress.php to archive-listing.php, single-listing.php, and taxonomy.php
+
+** 1.4.4 **
+Fix file paths in stylesheet
+
+** 1.4.3 **
+Change main stylesheet path, prettify, and include comments
+
+** 1.4.2 **
+dsIDXpress conflict - Use CHILD_DIR for the path to shortcodes.php
+
+** 1.4.1 **
+Include Footer markup in functions.php so it is easily removed via the WP Editor
+
+** 1.4 **
+Bump in version number to prevent update conflict
+
+** 1.0 **
+Initial release

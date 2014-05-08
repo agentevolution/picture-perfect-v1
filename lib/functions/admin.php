@@ -59,9 +59,6 @@ function picture_perfect_admin_setup()
     # Don't update theme
     add_filter('http_request_args', 'picture_perfect_dont_update_theme', 5, 2);
 
-    # Customize link under the appearance tab
-    add_action('admin_menu', 'picture_perfect_customize_menu_link');
-
     # Add documentation link to menu bar
     add_action(
         'wp_before_admin_bar_render',
